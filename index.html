@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Gecko Coffee — Café de especialidad</title>
+
+  <meta
+    name="description"
+    content="Gecko Coffee — micro-tostaduría de café de especialidad, pequeños lotes y cafés seleccionados por su calidad y complejidad."
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <a href="#inicio" class="logo">
+      GECKO<span>COFFEE</span>
+    </a>
+
+    <nav>
+      <a href="#inicio">Inicio</a>
+      <a href="#cafes">Cafés</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#pedido" class="cart-link">
+        Pedido <span id="cart-count">0</span>
+      </a>
+    </nav>
+
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+
+    <section id="inicio" class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          MICRO-TOSTADURÍA · CAFÉ DE ESPECIALIDAD
+        </p>
+
+        <h1>
+          Descubrí la belleza y complejidad del café.
+        </h1>
+
+        <p class="hero-text">
+          Seleccionamos cafés excepcionales y los tostamos
+          en pequeños lotes para que puedas disfrutarlos siempre frescos.
+        </p>
+
+        <a href="#cafes" class="button">
+          Descubrir los cafés
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- COFFEES -->
+
+    <section id="cafes" class="section">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          NUESTROS CAFÉS
+        </p>
+
+        <h2>
+          Cafés seleccionados con cuidado.
+        </h2>
+
+        <p>
+          Una selección de cafés de especialidad elegidos
+          por su calidad, complejidad y carácter.
+        </p>
+
+      </div>
+
+
+      <div class="coffee-grid">
+
+
+        <!-- COFFEE 1 -->
+
+        <article class="coffee-card blue">
+
+          <div class="coffee-image">
+            BLUE
+          </div>
+
+          <div class="coffee-info">
+
+            <p class="coffee-type">
+              MICRO-LOTE · HONEY
+            </p>
+
+            <h3>
+              Geisha
+            </h3>
+
+            <p>
+              Floral, frutas tropicales, miel y una
+              finalización larga.
+            </p>
+
+            <div class="coffee-bottom">
+
+              <span>
+                250 g
+              </span>
+
+              <strong>
+                Consultar precio
+              </strong>
+
+            </div>
+
+            <button onclick="addToOrder('Geisha')">
+              Añadir al pedido
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- COFFEE 2 -->
+
+        <article class="coffee-card green">
+
+          <div class="coffee-image">
+            GREEN
+          </div>
+
+          <div class="coffee-info">
+
+            <p class="coffee-type">
+              MICRO-LOTE · HONEY
+            </p>
+
+            <h3>
+              Paraíso
+            </h3>
+
+            <p>
+              Floral, melado de caña, almendras y limón.
+            </p>
+
+            <div class="coffee-bottom">
+
+              <span>
+                250 g
+              </span>
+
+              <strong>
+                Consultar precio
+              </strong>
+
+            </div>
+
+            <button onclick="addToOrder('Paraíso')">
+              Añadir al pedido
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- COFFEE 3 -->
+
+        <article class="coffee-card red">
+
+          <div class="coffee-image">
+            RED
+          </div>
+
+          <div class="coffee-info">
+
+            <p class="coffee-type">
+              MICRO-LOTE · HONEY
+            </p>
+
+            <h3>
+              Red Bourbon
+            </h3>
+
+            <p>
+              Floral, melado de caña, miel y
+              finalización dulce.
+            </p>
+
+            <div class="coffee-bottom">
+
+              <span>
+                250 g
+              </span>
+
+              <strong>
+                Consultar precio
+              </strong>
+
+            </div>
+
+            <button onclick="addToOrder('Red Bourbon')">
+              Añadir al pedido
+            </button>
+
+          </div>
+
+        </article>
+
+
+        <!-- COFFEE 4 -->
+
+        <article class="coffee-card brown">
+
+          <div class="coffee-image">
+            BROWN
+          </div>
+
+          <div class="coffee-info">
+
+            <p class="coffee-type">
+              MICRO-LOTE · NATURAL
+            </p>
+
+            <h3>
+              Yellow Bourbon
+            </h3>
+
+            <p>
+              Un café expresivo y dulce,
+              seleccionado en pequeños lotes.
+            </p>
+
+            <div class="coffee-bottom">
+
+              <span>
+                250 g
+              </span>
+
+              <strong>
+                Consultar precio
+              </strong>
+
+            </div>
+
+            <button onclick="addToOrder('Yellow Bourbon')">
+              Añadir al pedido
+            </button>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="nosotros" class="about">
+
+      <div>
+
+        <p class="eyebrow">
+          GECKO COFFEE
+        </p>
+
+        <h2>
+          Pequeños lotes. Grandes cafés.
+        </h2>
+
+      </div>
+
+
+      <div>
+
+        <p>
+          Somos una micro-tostaduría enfocada en encontrar
+          cafés de especialidad excepcionales, con gran calidad
+          y complejidad.
+        </p>
+
+        <p>
+          Tostamos en pequeños lotes y buscamos que cada café
+          llegue a tu taza fresco, expresivo y listo para ser descubierto.
+        </p>
+
+        <p>
+          Porque el café puede ser mucho más que una bebida:
+          puede ser una forma de explorar aromas, sabores,
+          lugares y procesos.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ORDER -->
+
+    <section id="pedido" class="section order">
+
+      <div class="section-heading">
+
+        <p class="eyebrow">
+          TU PEDIDO
+        </p>
+
+        <h2>
+          Elegí tus cafés.
+        </h2>
+
+        <p>
+          Por ahora, el pedido se confirma directamente contigo.
+          El pago se coordina después por transferencia bancaria.
+        </p>
+
+      </div>
+
+
+      <div class="order-box">
+
+        <div id="order-list">
+
+          <p class="empty">
+            Todavía no agregaste ningún café.
+          </p>
+
+        </div>
+
+
+        <div class="order-actions">
+
+          <button
+            class="button"
+            onclick="showOrderForm()"
+          >
+            Continuar con el pedido
+          </button>
+
+        </div>
+
+
+        <form
+          id="order-form"
+          onsubmit="submitOrder(event)"
+          hidden
+        >
+
+          <input
+            id="customer-name"
+            placeholder="Nombre"
+            required
+          >
+
+          <input
+            id="customer-phone"
+            placeholder="WhatsApp / teléfono"
+            required
+          >
+
+          <input
+            id="customer-email"
+            type="email"
+            placeholder="Email"
+            required
+          >
+
+          <textarea
+            id="customer-address"
+            placeholder="Dirección o lugar de entrega"
+            rows="3"
+            required
+          ></textarea>
+
+          <button
+            class="button"
+            type="submit"
+          >
+            Enviar pedido
+          </button>
+
+        </form>
+
+
+        <p
+          id="order-message"
+          class="order-message"
+        ></p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contacto" class="contact">
+
+      <p class="eyebrow">
+        CONTACTO
+      </p>
+
+      <h2>
+        ¿Querés conocer mejor nuestros cafés?
+      </h2>
+
+      <p>
+        Escribinos y estaremos encantados de ayudarte
+        a elegir tu próximo café.
+      </p>
+
+      <a
+        class="button light"
+        href="mailto:hola@geckocoffee.com.py"
+      >
+        Contactar
+      </a>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="logo">
+      GECKO<span>COFFEE</span>
+    </div>
+
+    <p>
+      © 2026 Gecko Coffee · Café de especialidad
+    </p>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
