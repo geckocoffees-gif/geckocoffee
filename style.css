@@ -49,12 +49,25 @@ button {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
   font-size: 1.15rem;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 
-.logo span {
+.logo > img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.logo > span {
+  display: inline-block;
+}
+
+.logo > span > span {
   font-weight: 400;
   margin-left: 3px;
 }
