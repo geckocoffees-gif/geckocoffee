@@ -928,3 +928,49 @@ footer p {
   background: white;
   color: #24211d;
 }
+
+/* =========================
+   ABOUT INTRO
+========================= */
+
+.about-intro {
+  padding: 150px 10%;
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 10%;
+  align-items: start;
+}
+
+.about-intro h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+
+.about-intro-text {
+  max-width: 620px;
+  padding-top: 15px;
+}
+
+.about-intro-text p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+  opacity: 0.78;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .about-intro {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 100px 6%;
+  }
+
+}
