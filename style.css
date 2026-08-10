@@ -292,9 +292,14 @@ button {
 
 .coffee-intro-text p {
   margin: 0 auto 28px;
-  font-size: 1.12rem;
+  font-size: 1.22rem;
   line-height: 1.75;
-  opacity: 0.72;
+  opacity: 0.78;
+}
+
+.coffee-intro-text strong {
+  font-weight: 700;
+  opacity: 1;
 }
 
 .coffee-intro-text p:last-child {
