@@ -8,13 +8,15 @@
 
   <meta
     name="description"
-    content="Gecko Coffee — micro-tostaduría de café de especialidad, pequeños lotes y cafés seleccionados por su calidad y complejidad."
+    content="Gecko Coffee — micro-tostaduría de café de especialidad en Paraguay."
   >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -27,6 +29,7 @@
       <a href="#cafes">Cafés</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
+
       <a href="#pedido" class="cart-link">
         Pedido <span id="cart-count">0</span>
       </a>
@@ -36,6 +39,7 @@
 
 
   <main>
+
 
     <!-- HERO -->
 
@@ -65,23 +69,24 @@
     </section>
 
 
+
     <!-- COFFEES -->
 
-    <section id="cafes" class="section">
+    <section id="cafes" class="section coffees-section">
 
       <div class="section-heading">
 
         <p class="eyebrow">
-          NUESTROS CAFÉS
+          NUESTRA SELECCIÓN
         </p>
 
         <h2>
-          Cafés seleccionados con cuidado.
+          Cafés que vale la pena descubrir.
         </h2>
 
         <p>
-          Una selección de cafés de especialidad elegidos
-          por su calidad, complejidad y carácter.
+          Seleccionamos cafés de especialidad por su calidad,
+          complejidad y carácter.
         </p>
 
       </div>
@@ -90,175 +95,255 @@
       <div class="coffee-grid">
 
 
-        <!-- COFFEE 1 -->
+        <!-- IMPERIAL -->
 
-        <article class="coffee-card blue">
+        <article class="coffee-card">
 
-          <div class="coffee-image">
-            BLUE
-          </div>
+          <a
+            href="#imperial"
+            class="coffee-image-link"
+          >
+
+            <div class="coffee-image">
+
+              <img
+                src="imperial-front.png"
+                alt="Café Imperial — Geisha Honey"
+              >
+
+            </div>
+
+          </a>
+
 
           <div class="coffee-info">
 
             <p class="coffee-type">
-              MICRO-LOTE · HONEY
+              GEISHA · HONEY · BRASIL
             </p>
 
             <h3>
-              Geisha
+              Imperial
             </h3>
 
-            <p>
-              Floral, frutas tropicales, miel y una
-              finalización larga.
+            <p class="tasting-notes">
+              Jazmín · Frutas tropicales · Miel
             </p>
 
-            <div class="coffee-bottom">
 
-              <span>
-                250 g
-              </span>
+            <div class="coffee-prices">
 
-              <strong>
-                Consultar precio
-              </strong>
+              <div>
+                <span>350 g</span>
+                <strong>90.000 Gs</strong>
+              </div>
+
+              <div>
+                <span>1 kg</span>
+                <strong>250.000 Gs</strong>
+              </div>
 
             </div>
 
-            <button onclick="addToOrder('Geisha')">
-              Añadir al pedido
-            </button>
+
+            <a
+              href="#imperial"
+              class="product-link"
+            >
+              Ver café →
+            </a>
 
           </div>
 
         </article>
 
 
-        <!-- COFFEE 2 -->
 
-        <article class="coffee-card green">
+        <!-- PARAÍSO -->
 
-          <div class="coffee-image">
-            GREEN
-          </div>
+        <article class="coffee-card">
+
+          <a
+            href="#paraiso"
+            class="coffee-image-link"
+          >
+
+            <div class="coffee-image">
+
+              <img
+                src="paraiso-front.png"
+                alt="Café Paraíso — Honey"
+              >
+
+            </div>
+
+          </a>
+
 
           <div class="coffee-info">
 
             <p class="coffee-type">
-              MICRO-LOTE · HONEY
+              PARAÍSO · HONEY · BRASIL
             </p>
 
             <h3>
               Paraíso
             </h3>
 
-            <p>
-              Floral, melado de caña, almendras y limón.
+            <p class="tasting-notes">
+              Almendras · Limón · Floral
             </p>
 
-            <div class="coffee-bottom">
 
-              <span>
-                250 g
-              </span>
+            <div class="coffee-prices">
 
-              <strong>
-                Consultar precio
-              </strong>
+              <div>
+                <span>350 g</span>
+                <strong>80.000 Gs</strong>
+              </div>
+
+              <div>
+                <span>1 kg</span>
+                <strong>220.000 Gs</strong>
+              </div>
 
             </div>
 
-            <button onclick="addToOrder('Paraíso')">
-              Añadir al pedido
-            </button>
+
+            <a
+              href="#paraiso"
+              class="product-link"
+            >
+              Ver café →
+            </a>
 
           </div>
 
         </article>
 
 
-        <!-- COFFEE 3 -->
 
-        <article class="coffee-card red">
+        <!-- AURORA -->
 
-          <div class="coffee-image">
-            RED
-          </div>
+        <article class="coffee-card">
+
+          <a
+            href="#aurora"
+            class="coffee-image-link"
+          >
+
+            <div class="coffee-image">
+
+              <img
+                src="aurora-front.png"
+                alt="Café Aurora — Bourbon Rojo Honey"
+              >
+
+            </div>
+
+          </a>
+
 
           <div class="coffee-info">
 
             <p class="coffee-type">
-              MICRO-LOTE · HONEY
+              BOURBON ROJO · HONEY · BRASIL
             </p>
 
             <h3>
-              Red Bourbon
+              Aurora
             </h3>
 
-            <p>
-              Floral, melado de caña, miel y
-              finalización dulce.
+            <p class="tasting-notes">
+              Floral · Azúcar de caña · Panela
             </p>
 
-            <div class="coffee-bottom">
 
-              <span>
-                250 g
-              </span>
+            <div class="coffee-prices">
 
-              <strong>
-                Consultar precio
-              </strong>
+              <div>
+                <span>350 g</span>
+                <strong>80.000 Gs</strong>
+              </div>
+
+              <div>
+                <span>1 kg</span>
+                <strong>220.000 Gs</strong>
+              </div>
 
             </div>
 
-            <button onclick="addToOrder('Red Bourbon')">
-              Añadir al pedido
-            </button>
+
+            <a
+              href="#aurora"
+              class="product-link"
+            >
+              Ver café →
+            </a>
 
           </div>
 
         </article>
 
 
-        <!-- COFFEE 4 -->
 
-        <article class="coffee-card brown">
+        <!-- DULCE BRISA -->
 
-          <div class="coffee-image">
-            BROWN
-          </div>
+        <article class="coffee-card">
+
+          <a
+            href="#dulce-brisa"
+            class="coffee-image-link"
+          >
+
+            <div class="coffee-image">
+
+              <img
+                src="dulcebrisa-front.png"
+                alt="Café Dulce Brisa — Catucaí Honey"
+              >
+
+            </div>
+
+          </a>
+
 
           <div class="coffee-info">
 
             <p class="coffee-type">
-              MICRO-LOTE · NATURAL
+              CATUCAÍ · HONEY · BRASIL
             </p>
 
             <h3>
-              Yellow Bourbon
+              Dulce Brisa
             </h3>
 
-            <p>
-              Un café expresivo y dulce,
-              seleccionado en pequeños lotes.
+            <p class="tasting-notes">
+              Té negro · Miel · Chocolate
             </p>
 
-            <div class="coffee-bottom">
 
-              <span>
-                250 g
-              </span>
+            <div class="coffee-prices">
 
-              <strong>
-                Consultar precio
-              </strong>
+              <div>
+                <span>350 g</span>
+                <strong>75.000 Gs</strong>
+              </div>
+
+              <div>
+                <span>1 kg</span>
+                <strong>200.000 Gs</strong>
+              </div>
 
             </div>
 
-            <button onclick="addToOrder('Yellow Bourbon')">
-              Añadir al pedido
-            </button>
+
+            <a
+              href="#dulce-brisa"
+              class="product-link"
+            >
+              Ver café →
+            </a>
 
           </div>
 
@@ -270,9 +355,477 @@
     </section>
 
 
+
+    <!-- PRODUCT DETAIL: IMPERIAL -->
+
+    <section
+      id="imperial"
+      class="product-detail"
+    >
+
+      <div class="product-detail-image">
+
+        <img
+          src="imperial-front.png"
+          alt="Café Imperial"
+        >
+
+      </div>
+
+
+      <div class="product-detail-content">
+
+        <p class="eyebrow">
+          GEISHA · HONEY · BRASIL
+        </p>
+
+        <h2>
+          Imperial
+        </h2>
+
+        <p class="score">
+          92.25 SCA
+        </p>
+
+        <p class="product-description">
+          Café de especialidad producido en las tierras
+          volcánicas del estado de São Paulo, Brasil.
+        </p>
+
+        <p class="product-description">
+          En taza, presenta delicadas notas de jazmín,
+          frutas tropicales, miel y carambola, acompañadas
+          de un <strong>cuerpo cremoso</strong> y un
+          <strong>final dulce y prolongado.</strong>
+        </p>
+
+
+        <div class="details-grid">
+
+          <div>
+            <span>Variedad</span>
+            <strong>Geisha</strong>
+          </div>
+
+          <div>
+            <span>Proceso</span>
+            <strong>Honey (Despulpado)</strong>
+          </div>
+
+          <div>
+            <span>Origen</span>
+            <strong>São Sebastião da Grama, Brasil</strong>
+          </div>
+
+          <div>
+            <span>Finca</span>
+            <strong>Sitio Córrego de Anta</strong>
+          </div>
+
+          <div>
+            <span>Altitud</span>
+            <strong>1.250 m</strong>
+          </div>
+
+          <div>
+            <span>Productor</span>
+            <strong>Pedro Lotti</strong>
+          </div>
+
+          <div>
+            <span>Cosecha</span>
+            <strong>Junio 2026</strong>
+          </div>
+
+          <div>
+            <span>Tueste</span>
+            <strong>Medio-Claro</strong>
+          </div>
+
+        </div>
+
+
+        <div class="product-order">
+
+          <div>
+            <strong>350 g</strong>
+            <span>90.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Imperial — 350 g')">
+            Añadir al pedido
+          </button>
+
+          <div>
+            <strong>1 kg</strong>
+            <span>250.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Imperial — 1 kg')">
+            Añadir al pedido
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PRODUCT DETAIL: PARAÍSO -->
+
+    <section
+      id="paraiso"
+      class="product-detail reverse"
+    >
+
+      <div class="product-detail-image">
+
+        <img
+          src="paraiso-front.png"
+          alt="Café Paraíso"
+        >
+
+      </div>
+
+
+      <div class="product-detail-content">
+
+        <p class="eyebrow">
+          PARAÍSO · HONEY · BRASIL
+        </p>
+
+        <h2>
+          Paraíso
+        </h2>
+
+        <p class="score">
+          90.13 SCA
+        </p>
+
+        <p class="product-description">
+          Café de especialidad producido en las tierras
+          volcánicas del estado de São Paulo, Brasil.
+        </p>
+
+        <p class="product-description">
+          En taza, presenta delicadas notas florales,
+          melado de caña, almendras y limón, acompañadas
+          de un <strong>cuerpo aterciopelado</strong> y un
+          <strong>final suave.</strong>
+        </p>
+
+
+        <div class="details-grid">
+
+          <div>
+            <span>Variedad</span>
+            <strong>Paraíso</strong>
+          </div>
+
+          <div>
+            <span>Proceso</span>
+            <strong>Honey (Despulpado)</strong>
+          </div>
+
+          <div>
+            <span>Origen</span>
+            <strong>São Sebastião da Grama, Brasil</strong>
+          </div>
+
+          <div>
+            <span>Finca</span>
+            <strong>Sitio Córrego de Anta</strong>
+          </div>
+
+          <div>
+            <span>Altitud</span>
+            <strong>1.250 m</strong>
+          </div>
+
+          <div>
+            <span>Productor</span>
+            <strong>Pedro Lotti</strong>
+          </div>
+
+          <div>
+            <span>Cosecha</span>
+            <strong>Junio 2026</strong>
+          </div>
+
+          <div>
+            <span>Tueste</span>
+            <strong>Medio-Claro</strong>
+          </div>
+
+        </div>
+
+
+        <div class="product-order">
+
+          <div>
+            <strong>350 g</strong>
+            <span>80.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Paraíso — 350 g')">
+            Añadir al pedido
+          </button>
+
+          <div>
+            <strong>1 kg</strong>
+            <span>220.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Paraíso — 1 kg')">
+            Añadir al pedido
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PRODUCT DETAIL: AURORA -->
+
+    <section
+      id="aurora"
+      class="product-detail"
+    >
+
+      <div class="product-detail-image">
+
+        <img
+          src="aurora-front.png"
+          alt="Café Aurora"
+        >
+
+      </div>
+
+
+      <div class="product-detail-content">
+
+        <p class="eyebrow">
+          BOURBON ROJO · HONEY · BRASIL
+        </p>
+
+        <h2>
+          Aurora
+        </h2>
+
+        <p class="score">
+          92.50 SCA
+        </p>
+
+        <p class="product-description">
+          Café de especialidad producido en las tierras
+          volcánicas del estado de São Paulo, Brasil.
+        </p>
+
+        <p class="product-description">
+          En taza, presenta notas de melado de caña,
+          flores, rapadura y miel, acompañadas de un
+          <strong>cuerpo aterciopelado</strong> y un
+          <strong>final dulce y prolongado.</strong>
+        </p>
+
+
+        <div class="details-grid">
+
+          <div>
+            <span>Variedad</span>
+            <strong>Bourbon Rojo</strong>
+          </div>
+
+          <div>
+            <span>Proceso</span>
+            <strong>Honey (Despulpado)</strong>
+          </div>
+
+          <div>
+            <span>Origen</span>
+            <strong>São Sebastião da Grama, Brasil</strong>
+          </div>
+
+          <div>
+            <span>Finca</span>
+            <strong>Sitio Córrego de Anta</strong>
+          </div>
+
+          <div>
+            <span>Altitud</span>
+            <strong>1.250 m</strong>
+          </div>
+
+          <div>
+            <span>Productor</span>
+            <strong>Pedro Lotti</strong>
+          </div>
+
+          <div>
+            <span>Cosecha</span>
+            <strong>Junio 2026</strong>
+          </div>
+
+          <div>
+            <span>Tueste</span>
+            <strong>Medio-Claro</strong>
+          </div>
+
+        </div>
+
+
+        <div class="product-order">
+
+          <div>
+            <strong>350 g</strong>
+            <span>80.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Aurora — 350 g')">
+            Añadir al pedido
+          </button>
+
+          <div>
+            <strong>1 kg</strong>
+            <span>220.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Aurora — 1 kg')">
+            Añadir al pedido
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- PRODUCT DETAIL: DULCE BRISA -->
+
+    <section
+      id="dulce-brisa"
+      class="product-detail reverse"
+    >
+
+      <div class="product-detail-image">
+
+        <img
+          src="dulcebrisa-front.png"
+          alt="Café Dulce Brisa"
+        >
+
+      </div>
+
+
+      <div class="product-detail-content">
+
+        <p class="eyebrow">
+          CATUCAÍ · HONEY · BRASIL
+        </p>
+
+        <h2>
+          Dulce Brisa
+        </h2>
+
+        <p class="score">
+          84.8 SCA
+        </p>
+
+        <p class="product-description">
+          Café de especialidad producido en el sur
+          de Minas Gerais, Brasil.
+        </p>
+
+        <p class="product-description">
+          En taza, presenta notas de frutas cítricas,
+          flores, miel, azúcar mascabado y caramelo,
+          acompañadas de un <strong>cuerpo cremoso</strong>,
+          una <strong>acidez cítrica</strong> y un
+          <strong>final agradable y prolongado.</strong>
+        </p>
+
+
+        <div class="details-grid">
+
+          <div>
+            <span>Variedad</span>
+            <strong>Catucaí</strong>
+          </div>
+
+          <div>
+            <span>Proceso</span>
+            <strong>Honey (Despulpado)</strong>
+          </div>
+
+          <div>
+            <span>Origen</span>
+            <strong>Poços de Caldas, Brasil</strong>
+          </div>
+
+          <div>
+            <span>Finca</span>
+            <strong>Sítio Ponte Funda</strong>
+          </div>
+
+          <div>
+            <span>Altitud</span>
+            <strong>1.150 m</strong>
+          </div>
+
+          <div>
+            <span>Cosecha</span>
+            <strong>2025/26</strong>
+          </div>
+
+          <div>
+            <span>Tueste</span>
+            <strong>Medio</strong>
+          </div>
+
+        </div>
+
+
+        <div class="product-order">
+
+          <div>
+            <strong>350 g</strong>
+            <span>75.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Dulce Brisa — 350 g')">
+            Añadir al pedido
+          </button>
+
+          <div>
+            <strong>1 kg</strong>
+            <span>200.000 Gs</span>
+          </div>
+
+          <button onclick="addToOrder('Dulce Brisa — 1 kg')">
+            Añadir al pedido
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
     <!-- ABOUT -->
 
-    <section id="nosotros" class="about">
+    <section
+      id="nosotros"
+      class="about"
+    >
 
       <div>
 
@@ -311,9 +864,13 @@
     </section>
 
 
+
     <!-- ORDER -->
 
-    <section id="pedido" class="section order">
+    <section
+      id="pedido"
+      class="section order"
+    >
 
       <div class="section-heading">
 
@@ -326,8 +883,8 @@
         </h2>
 
         <p>
-          Por ahora, el pedido se confirma directamente contigo.
-          El pago se coordina después por transferencia bancaria.
+          Agregá tus cafés al pedido y luego coordinaremos
+          contigo el pago y la entrega.
         </p>
 
       </div>
@@ -408,9 +965,13 @@
     </section>
 
 
+
     <!-- CONTACT -->
 
-    <section id="contacto" class="contact">
+    <section
+      id="contacto"
+      class="contact"
+    >
 
       <p class="eyebrow">
         CONTACTO
@@ -437,6 +998,9 @@
   </main>
 
 
+
+  <!-- FOOTER -->
+
   <footer>
 
     <div class="logo">
@@ -448,6 +1012,7 @@
     </p>
 
   </footer>
+
 
 
   <script src="script.js"></script>
