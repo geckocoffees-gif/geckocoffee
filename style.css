@@ -204,6 +204,33 @@ button {
   opacity: 0.78;
 }
 
+/* =========================
+   COFFEE CATALOGUE
+========================= */
+
+.catalogue-intro {
+  padding: 150px 6% 90px;
+  max-width: 900px;
+}
+
+.catalogue-intro h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 30px;
+}
+
+.catalogue-intro > p:last-child {
+  max-width: 620px;
+  font-size: 1.1rem;
+  opacity: 0.7;
+}
+
+.catalogue {
+  padding: 20px 6% 130px;
+}
 
 /* =========================
    COFFEE GRID
