@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -33,7 +34,6 @@
 
     </a>
 
-
     <nav>
 
       <a href="index.html">
@@ -41,7 +41,7 @@
       </a>
 
       <a href="cafes.html">
-        Nuestros cafés
+        Cafés
       </a>
 
       <a href="index.html#nosotros">
@@ -61,20 +61,27 @@
   </header>
 
 
-
   <!-- PRODUCT -->
 
   <main>
 
     <section class="product-page">
 
-      <!-- IMAGE -->
+
+      <!-- IMAGES -->
 
       <div class="product-page-image">
 
         <img
           src="imperial-front.png"
           alt="Café Imperial — Geisha Honey"
+          class="main-product-image"
+        >
+
+        <img
+          src="imperial-bag.jpg"
+          alt="Bolsa de café Imperial"
+          class="secondary-product-image"
         >
 
       </div>
@@ -173,50 +180,39 @@
 
         <div class="purchase">
 
-          <div class="purchase-option">
+          <p class="purchase-label">
+            Elegí el tamaño
+          </p>
 
-            <div>
-
-              <strong>
-                350 g
-              </strong>
-
-              <span>
-                90.000 Gs
-              </span>
-
-            </div>
+          <div class="size-selector">
 
             <button
-              onclick="addToOrder('Imperial — 350 g')"
+              type="button"
+              class="size-option active"
+              onclick="selectSize(this, '350 g')"
             >
-              Añadir al carrito
+              <span>350 g</span>
+              <strong>90.000 Gs</strong>
+            </button>
+
+            <button
+              type="button"
+              class="size-option"
+              onclick="selectSize(this, '1 kg')"
+            >
+              <span>1 kg</span>
+              <strong>250.000 Gs</strong>
             </button>
 
           </div>
 
-
-          <div class="purchase-option">
-
-            <div>
-
-              <strong>
-                1 kg
-              </strong>
-
-              <span>
-                250.000 Gs
-              </span>
-
-            </div>
-
-            <button
-              onclick="addToOrder('Imperial — 1 kg')"
-            >
-              Añadir al carrito
-            </button>
-
-          </div>
+          <button
+            type="button"
+            class="add-to-cart-button"
+            onclick="addSelectedToOrder()"
+          >
+            Añadir al carrito
+          </button>
 
         </div>
 
@@ -225,7 +221,7 @@
           href="cafes.html"
           class="back-link"
         >
-          ← Volver a nuestros cafés
+          ← Volver a cafés
         </a>
 
       </div>
@@ -233,7 +229,6 @@
     </section>
 
   </main>
-
 
 
   <!-- FOOTER -->
@@ -260,7 +255,33 @@
   </footer>
 
 
+  <script>
+
+    let selectedSize = "350 g";
+
+    function selectSize(button, size) {
+
+      document
+        .querySelectorAll(".size-option")
+        .forEach(option => {
+          option.classList.remove("active");
+        });
+
+      button.classList.add("active");
+
+      selectedSize = size;
+    }
+
+    function addSelectedToOrder() {
+
+      addToOrder("Imperial — " + selectedSize);
+
+    }
+
+  </script>
+
   <script src="script.js"></script>
 
 </body>
 </html>
+```
