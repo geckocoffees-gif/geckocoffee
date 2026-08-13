@@ -1587,3 +1587,8 @@ cart-toast {
   position: relative;
   z-index: 1;
 }
+
+.catalogue-intro,
+.catalogue {
+  background: #fbf9f5;
+}
