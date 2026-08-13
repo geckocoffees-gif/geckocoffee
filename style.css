@@ -261,25 +261,6 @@ button {
   padding: 150px 8%;
   text-align: center;
   background: #f5f1e8;
-  position: relative;
-  overflow: hidden;
-}
-
-.coffee-intro::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("coffee1.jpg") center/cover no-repeat;
-  opacity: 0.1;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.coffee-intro::before,
-.coffee-intro h2,
-.coffee-intro-text {
-  position: relative;
-  z-index: 1;
 }
 
 /* Small decorative line */
