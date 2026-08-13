@@ -1,115 +1,97 @@
 let order = [];
 
-function addToOrder(name) {
-  order.push(name);
-
+function addToOrder(product, grind, size, price) {
+  order.push({ product: product, grind: grind, size: size, price: price });
   updateOrder();
 
-  document.querySelector("#pedido").scrollIntoView({
-    behavior: "smooth"
-  });
+  const cartSection = document.querySelector("#pedido");
+  if (cartSection) {
+    cartSection.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
+function removeFromOrder(index) {
+  order.splice(index, 1);
+  updateOrder();
+}
+
+function formatGs(amount) {
+  return amount.toLocaleString("es-PY") + " Gs";
+}
 
 function updateOrder() {
-
-  document.getElementById("cart-count").textContent = order.length;
+  const countEl = document.getElementById("cart-count");
+  if (countEl) {
+    countEl.textContent = order.length;
+  }
 
   const list = document.getElementById("order-list");
+  if (!list) return;
 
   if (!order.length) {
-
-    list.innerHTML =
-      '<p class="empty">Todavía no agregaste ningún café.</p>';
-
-    return;
+    list.innerHTML = '<p class="empty">Todavía no agregaste ningún café.</p>';
+  } else {
+    list.innerHTML = order
+      .map(function (item, index) {
+        return (
+          '<div class="order-item">' +
+          "<span>" + item.product + " — " + item.grind + " — " + item.size + "</span>" +
+          "<strong>" + formatGs(item.price) + "</strong>" +
+          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')">✕</button>' +
+          "</div>"
+        );
+      })
+      .join("");
   }
 
-
-  const counts = {};
-
-  order.forEach(function(name) {
-
-    counts[name] = (counts[name] || 0) + 1;
-
-  });
-
-
-  list.innerHTML = Object.entries(counts)
-    .map(function([name, quantity]) {
-
-      return `
-        <div class="order-item">
-          <span>${name}</span>
-          <strong>${quantity} × 250 g</strong>
-        </div>
-      `;
-
-    })
-    .join("");
+  const totalEl = document.getElementById("order-total");
+  if (totalEl) {
+    const total = order.reduce(function (sum, item) {
+      return sum + item.price;
+    }, 0);
+    totalEl.textContent = formatGs(total);
+  }
 }
 
-
 function showOrderForm() {
-
   if (!order.length) {
-
     alert("Primero agregá al menos un café a tu pedido.");
-
     return;
   }
-
   document.getElementById("order-form").hidden = false;
 }
 
-
 function submitOrder(event) {
-
   event.preventDefault();
 
-
-  const counts = {};
-
-  order.forEach(function(name) {
-
-    counts[name] = (counts[name] || 0) + 1;
-
-  });
-
-
-  const details = Object.entries(counts)
-    .map(function([name, quantity]) {
-
-      return `${quantity} × ${name} (250 g)`;
-
+  const details = order
+    .map(function (item) {
+      return item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.price);
     })
     .join("\n");
 
+  const total = order.reduce(function (sum, item) {
+    return sum + item.price;
+  }, 0);
 
   const message =
-    `Nuevo pedido Gecko Coffee\n\n` +
-    `${details}\n\n` +
-    `Nombre: ${document.getElementById("customer-name").value}\n` +
-    `WhatsApp: ${document.getElementById("customer-phone").value}\n` +
-    `Email: ${document.getElementById("customer-email").value}\n` +
-    `Entrega: ${document.getElementById("customer-address").value}`;
-
+    "Nuevo pedido Gecko Coffee\n\n" +
+    details + "\n\n" +
+    "Total: " + formatGs(total) + "\n\n" +
+    "Nombre: " + document.getElementById("customer-name").value + "\n" +
+    "WhatsApp: " + document.getElementById("customer-phone").value + "\n" +
+    "Email: " + document.getElementById("customer-email").value + "\n" +
+    "Entrega: " + document.getElementById("customer-address").value;
 
   /*
     TEMPORARY WHATSAPP NUMBER
-
-    We'll replace this with your real
-    Gecko Coffee WhatsApp number later.
+    Replace with the real Gecko Coffee WhatsApp number.
   */
-
   const whatsapp = "595000000000";
-
-
   window.open(
-    `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`,
+    "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message),
     "_blank"
   );
-
 
   document.getElementById("order-message").textContent =
     "Tu pedido está listo para enviar por WhatsApp.";
