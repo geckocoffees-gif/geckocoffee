@@ -1134,10 +1134,14 @@ footer p {
 
 
 /* MOBILE */
-
 @media (max-width: 900px) {
   .product-thumbnail {
     width: 56px;
     height: 56px;
   }
+}
+
+.product-page .product-page-image {
+  flex-direction: column;
+  justify-content: flex-start;
 }
