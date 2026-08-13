@@ -1333,13 +1333,35 @@ footer p {
   text-align: center;
 }
 
+.help-box {
+  max-width: 750px;
+  margin: 50px auto 0;
+  padding: 55px 45px;
+  background: #e8dfd0;
+  text-align: center;
+}
+
+.help-box .eyebrow {
+  margin-bottom: 16px;
+}
+
+.help-box h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+}
+
 .help-box p {
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  opacity: 0.78;
+  margin-bottom: 6px;
 }
 
 .email-link {
   color: #2563eb;
+  font-weight: 600;
   text-decoration: underline;
 }
 
@@ -1350,12 +1372,23 @@ footer p {
 .whatsapp-contact {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 28px;
+  padding: 13px 24px;
+  border: 1px solid rgba(36, 33, 29, 0.25);
+  border-radius: 50px;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: #25d366;
+  color: #24211d;
+  transition: all 0.2s ease;
 }
 
 .whatsapp-contact:hover {
-  opacity: 0.85;
+  border-color: #24211d;
+  background: rgba(36, 33, 29, 0.05);
+}
+
+.whatsapp-icon {
+  color: #25d366;
+  flex-shrink: 0;
 }
