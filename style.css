@@ -1145,3 +1145,40 @@ footer p {
   flex-direction: column;
   justify-content: flex-start;
 }
+
+.selected-price {
+  margin-top: 10px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.quantity-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid rgba(36, 33, 29, 0.25);
+  border-radius: 50px;
+  padding: 6px 8px;
+}
+
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #24211d;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+  background: rgba(36, 33, 29, 0.08);
+}
+
+#quantity-value {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 700;
+}
