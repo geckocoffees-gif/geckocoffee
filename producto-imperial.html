@@ -72,19 +72,42 @@
 
       <div class="product-page-image">
 
-        <img
-          src="imperial-front.png"
-          alt="Café Imperial — Geisha Honey"
-          class="main-product-image"
-        >
+  <div class="main-image-container">
+    <img
+      id="main-product-image"
+      src="imperial-front.png"
+      alt="Café Imperial — Geisha Honey"
+      class="main-product-image"
+    >
+  </div>
 
-        <img
-          src="imperial-bag.jpeg"
-          alt="Bolsa de café Imperial"
-          class="secondary-product-image"
-        >
+  <div class="product-thumbnails">
 
-      </div>
+    <button
+      type="button"
+      class="product-thumbnail active"
+      onclick="changeProductImage('imperial-front.png', 'Café Imperial — Geisha Honey', this)"
+    >
+      <img
+        src="imperial-front.png"
+        alt="Imperial"
+      >
+    </button>
+
+    <button
+      type="button"
+      class="product-thumbnail"
+      onclick="changeProductImage('imperial-bag.jpeg', 'Bolsa de café Imperial', this)"
+    >
+      <img
+        src="imperial-bag.jpeg"
+        alt="Bolsa de café Imperial"
+      >
+    </button>
+
+  </div>
+
+</div>
 
 
       <!-- INFORMATION -->
@@ -178,44 +201,27 @@
 
         <!-- PURCHASE -->
 
-        <div class="purchase">
+ </div>
 
-          <p class="purchase-label">
-            Elegí el tamaño
-          </p>
 
-          <div class="size-selector">
+  <button
+    type="button"
+    id="add-to-cart-button"
+    class="add-to-cart-button"
+    disabled
+    onclick="addSelectedToOrder()"
+  >
+    Añadir al carrito
+  </button>
 
-            <button
-              type="button"
-              class="size-option active"
-              onclick="selectSize(this, '350 g')"
-            >
-              <span>350 g</span>
-              <strong>90.000 Gs</strong>
-            </button>
+  <p
+    id="selection-message"
+    class="selection-message"
+  >
+    Seleccioná el tamaño y la presentación
+  </p>
 
-            <button
-              type="button"
-              class="size-option"
-              onclick="selectSize(this, '1 kg')"
-            >
-              <span>1 kg</span>
-              <strong>250.000 Gs</strong>
-            </button>
-
-          </div>
-
-          <button
-            type="button"
-            class="add-to-cart-button"
-            onclick="addSelectedToOrder()"
-          >
-            Añadir al carrito
-          </button>
-
-        </div>
-
+</div>
 
         <a
           href="cafes.html"
