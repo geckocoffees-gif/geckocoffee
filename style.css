@@ -1569,3 +1569,22 @@ cart-toast {
   height: 28px;
   fill: #ffffff;
 }
+.catalogue {
+  position: relative;
+}
+
+.catalogue-background {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 90%);
+  opacity: 0.12;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.coffee-grid {
+  position: relative;
+  z-index: 1;
+}
