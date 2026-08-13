@@ -1323,3 +1323,39 @@ footer p {
     width: 220px;
   }
 }
+
+
+.help-box {
+  max-width: 750px;
+  margin: 40px auto 0;
+  padding: 30px 35px;
+  background: #e8dfd0;
+  text-align: center;
+}
+
+.help-box p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.email-link {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.email-link:hover {
+  opacity: 0.75;
+}
+
+.whatsapp-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-weight: 700;
+  color: #25d366;
+}
+
+.whatsapp-contact:hover {
+  opacity: 0.85;
+}
