@@ -1281,17 +1281,22 @@ footer p {
 
 .cart-toast {
   position: fixed;
+  bottom: 24px;
+  right: 24px;
   z-index: 200;
-  width: 250px;
-  padding: 18px 20px;
-  background: #f5f1e8;
-  border: 1px solid rgba(36, 33, 29, 0.12);
-  border-radius: 12px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
-  transform: translateY(-8px);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: #8c6247;
+  color: #f5f1e8;
+  border-radius: 50px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-size: 0.85rem;
+  transform: translateY(20px);
   opacity: 0;
   pointer-events: none;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .cart-toast.visible {
@@ -1300,33 +1305,21 @@ footer p {
   pointer-events: auto;
 }
 
-.cart-toast::before {
-  content: "";
-  position: absolute;
-  top: -6px;
-  right: 24px;
-  width: 12px;
-  height: 12px;
-  background: #f5f1e8;
-  border-left: 1px solid rgba(36, 33, 29, 0.12);
-  border-top: 1px solid rgba(36, 33, 29, 0.12);
-  transform: rotate(45deg);
-}
-
-#cart-toast-text {
-  font-size: 0.85rem;
-  margin-bottom: 10px;
-}
-
-.cart-toast-link {
-  display: inline-block;
-  font-size: 0.8rem;
+.cart-toast a {
+  color: #f5f1e8;
   font-weight: 700;
-  border-bottom: 1px solid #24211d;
+  text-decoration: underline;
+  white-space: nowrap;
 }
 
 @media (max-width: 700px) {
   .cart-toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    justify-content: space-between;
+  }
+}
     width: 220px;
   }
 }
