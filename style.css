@@ -1569,8 +1569,15 @@ cart-toast {
   height: 28px;
   fill: #ffffff;
 }
+
+.catalogue-intro {
+  background: #fbf9f5;
+}
+
 .catalogue {
   position: relative;
+  overflow: hidden;
+  background: #fbf9f5;
 }
 
 .catalogue-background {
@@ -1578,7 +1585,8 @@ cart-toast {
   bottom: 0;
   left: 0;
   width: 100%;
-  opacity: 1;   /* temporary, just to inspect */
+  height: auto;
+  opacity: 0.12;
   z-index: 0;
   pointer-events: none;
 }
@@ -1586,9 +1594,4 @@ cart-toast {
 .coffee-grid {
   position: relative;
   z-index: 1;
-}
-
-.catalogue-intro,
-.catalogue {
-  background: #fbf9f5;
 }
