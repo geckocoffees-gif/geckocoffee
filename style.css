@@ -1182,3 +1182,37 @@ footer p {
   text-align: center;
   font-weight: 700;
 }
+
+.coffee-purchase-row {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(36, 33, 29, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.coffee-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.coffee-buy-button {
+  padding: 10px 20px;
+  border: 1px solid #24211d;
+  border-radius: 50px;
+  background: #24211d;
+  color: #f5f1e8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.coffee-buy-button:hover {
+  background: transparent;
+  color: #24211d;
+}
