@@ -122,45 +122,52 @@
     <!-- PURCHASE -->
     <div class="purchase">
 
-      <div class="purchase-group">
-        <p class="purchase-label">Presentación</p>
-        <div class="selection-row">
-          <button type="button" class="selection-option active" data-grind="En granos" onclick="selectGrind(this)">
-            En granos
-          </button>
-          <button type="button" class="selection-option disabled" disabled>
-            Molido
-          </button>
-        </div>
-      </div>
-
-      <div class="purchase-group">
-        <p class="purchase-label">Tamaño</p>
-        <div class="selection-row">
-          <button type="button" class="selection-option" data-size="350 g" data-price="90000" onclick="selectSize(this)">
-            <span class="option-size">350 g</span>
-            <span class="option-price">90.000 Gs</span>
-          </button>
-          <button type="button" class="selection-option" data-size="1 kg" data-price="250000" onclick="selectSize(this)">
-            <span class="option-size">1 kg</span>
-            <span class="option-price">250.000 Gs</span>
-          </button>
-        </div>
-      </div>
-
-      <button
-        type="button"
-        id="add-to-cart-button"
-        class="add-to-cart-button"
-        disabled
-        onclick="addSelectedToOrder()"
-      >
-        Añadir al carrito
+  <div class="purchase-group">
+    <p class="purchase-label">Presentación</p>
+    <div class="selection-row">
+      <button type="button" class="selection-option active" data-grind="En granos" onclick="selectGrind(this)">
+        En granos
       </button>
-      <p id="selection-message" class="selection-message">
-        Seleccioná el tamaño
-      </p>
+      <button type="button" class="selection-option disabled" disabled>
+        Molido
+      </button>
     </div>
+  </div>
+
+  <div class="purchase-group">
+    <p class="purchase-label">Tamaño</p>
+    <div class="selection-row">
+      <button type="button" class="selection-option active" data-size="350 g" data-price="90000" onclick="selectSize(this)">
+        350 g
+      </button>
+      <button type="button" class="selection-option" data-size="1 kg" data-price="250000" onclick="selectSize(this)">
+        1 kg
+      </button>
+    </div>
+    <div class="selected-price" id="selected-price">90.000 Gs</div>
+  </div>
+
+  <div class="purchase-group">
+    <p class="purchase-label">Cantidad</p>
+    <div class="quantity-selector">
+      <button type="button" class="qty-btn" onclick="changeQuantity(-1)">−</button>
+      <span id="quantity-value">1</span>
+      <button type="button" class="qty-btn" onclick="changeQuantity(1)">+</button>
+    </div>
+  </div>
+
+  <button
+    type="button"
+    id="add-to-cart-button"
+    class="add-to-cart-button"
+    onclick="addSelectedToOrder()"
+  >
+    Añadir al carrito
+  </button>
+  <p id="selection-message" class="selection-message">
+    350 g · En granos
+  </p>
+</div>
 
   </div>
 
