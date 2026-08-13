@@ -45,23 +45,12 @@ button {
   transition: color 0.25s ease;
 }
 
-.site-header nav a:not(.cart-link)::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1.5px;
-  background: #8c6247;
-  transition: width 0.3s ease;
+.site-header nav a {
+  transition: opacity 0.2s ease;
 }
 
-.site-header nav a:not(.cart-link):hover {
-  color: #8c6247;
-}
-
-.site-header nav a:not(.cart-link):hover::after {
-  width: 100%;
+.site-header nav a:hover {
+  opacity: 0.55;
 }
 
 .cart-link {
