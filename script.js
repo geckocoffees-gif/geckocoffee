@@ -1,7 +1,14 @@
 let order = [];
 
-function addToOrder(product, grind, size, price) {
-  order.push({ product: product, grind: grind, size: size, price: price });
+function addToOrder(product, grind, size, unitPrice, quantity) {
+  quantity = quantity || 1;
+  order.push({
+    product: product,
+    grind: grind,
+    size: size,
+    unitPrice: unitPrice,
+    quantity: quantity
+  });
   updateOrder();
 
   const cartSection = document.querySelector("#pedido");
@@ -35,8 +42,8 @@ function updateOrder() {
       .map(function (item, index) {
         return (
           '<div class="order-item">' +
-          "<span>" + item.product + " — " + item.grind + " — " + item.size + "</span>" +
-          "<strong>" + formatGs(item.price) + "</strong>" +
+          "<span>" + item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + "</span>" +
+          "<strong>" + formatGs(item.unitPrice * item.quantity) + "</strong>" +
           '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')">✕</button>' +
           "</div>"
         );
@@ -47,7 +54,7 @@ function updateOrder() {
   const totalEl = document.getElementById("order-total");
   if (totalEl) {
     const total = order.reduce(function (sum, item) {
-      return sum + item.price;
+      return sum + (item.unitPrice * item.quantity);
     }, 0);
     totalEl.textContent = formatGs(total);
   }
@@ -66,12 +73,12 @@ function submitOrder(event) {
 
   const details = order
     .map(function (item) {
-      return item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.price);
+      return item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity);
     })
     .join("\n");
 
   const total = order.reduce(function (sum, item) {
-    return sum + item.price;
+    return sum + (item.unitPrice * item.quantity);
   }, 0);
 
   const message =
