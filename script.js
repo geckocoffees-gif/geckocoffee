@@ -95,7 +95,7 @@ function submitOrder(event) {
   submitButton.disabled = true;
   submitButton.textContent = "Enviando...";
 
-  fetch("https://formsubmit.co/ajax/hola@geckocoffee.com.py", {
+  fetch("https://formsubmit.co/ajax/geckocoffees@gmail.com.py", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -118,7 +118,7 @@ function submitOrder(event) {
       submitButton.disabled = false;
       submitButton.textContent = "Finalizar pedido";
       document.getElementById("order-message").textContent =
-        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a hola@geckocoffee.com.py.";
+        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@.com.py.";
     });
 }
 
