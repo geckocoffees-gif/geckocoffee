@@ -1,4 +1,8 @@
-let order = [];
+let order = JSON.parse(localStorage.getItem("geckoOrder") || "[]");
+
+function saveOrder() {
+  localStorage.setItem("geckoOrder", JSON.stringify(order));
+}
 
 function addToOrder(product, grind, size, unitPrice, quantity) {
   quantity = quantity || 1;
@@ -9,16 +13,14 @@ function addToOrder(product, grind, size, unitPrice, quantity) {
     unitPrice: unitPrice,
     quantity: quantity
   });
+  saveOrder();
   updateOrder();
-
-  const cartSection = document.querySelector("#pedido");
-  if (cartSection) {
-    cartSection.scrollIntoView({ behavior: "smooth" });
-  }
+  window.location.href = "cart.html";
 }
 
 function removeFromOrder(index) {
   order.splice(index, 1);
+  saveOrder();
   updateOrder();
 }
 
@@ -33,10 +35,13 @@ function updateOrder() {
   }
 
   const list = document.getElementById("order-list");
+  const form = document.getElementById("order-form");
+
   if (!list) return;
 
   if (!order.length) {
     list.innerHTML = '<p class="empty">Todavía no agregaste ningún café.</p>';
+    if (form) form.hidden = true;
   } else {
     list.innerHTML = order
       .map(function (item, index) {
@@ -49,6 +54,7 @@ function updateOrder() {
         );
       })
       .join("");
+    if (form) form.hidden = false;
   }
 
   const totalEl = document.getElementById("order-total");
@@ -60,16 +66,10 @@ function updateOrder() {
   }
 }
 
-function showOrderForm() {
-  if (!order.length) {
-    alert("Primero agregá al menos un café a tu pedido.");
-    return;
-  }
-  document.getElementById("order-form").hidden = false;
-}
-
 function submitOrder(event) {
   event.preventDefault();
+
+  if (!order.length) return;
 
   const details = order
     .map(function (item) {
@@ -81,25 +81,45 @@ function submitOrder(event) {
     return sum + (item.unitPrice * item.quantity);
   }, 0);
 
-  const message =
-    "Nuevo pedido Gecko Coffee\n\n" +
-    details + "\n\n" +
-    "Total: " + formatGs(total) + "\n\n" +
-    "Nombre: " + document.getElementById("customer-name").value + "\n" +
-    "WhatsApp: " + document.getElementById("customer-phone").value + "\n" +
-    "Email: " + document.getElementById("customer-email").value + "\n" +
-    "Entrega: " + document.getElementById("customer-address").value;
+  const payload = {
+    "Cliente": document.getElementById("customer-name").value,
+    "Email": document.getElementById("customer-email").value,
+    "WhatsApp": document.getElementById("customer-phone").value || "No indicado",
+    "Direccion de entrega": document.getElementById("customer-address").value,
+    "Pedido": details,
+    "Total": formatGs(total),
+    "_subject": "Nuevo pedido - Gecko Coffee"
+  };
 
-  /*
-    TEMPORARY WHATSAPP NUMBER
-    Replace with the real Gecko Coffee WhatsApp number.
-  */
-  const whatsapp = "595000000000";
-  window.open(
-    "https://wa.me/" + whatsapp + "?text=" + encodeURIComponent(message),
-    "_blank"
-  );
+  const submitButton = event.target.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = "Enviando...";
 
-  document.getElementById("order-message").textContent =
-    "Tu pedido está listo para enviar por WhatsApp.";
+  fetch("https://formsubmit.co/ajax/hola@geckocoffee.com.py", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(function (response) {
+      if (!response.ok) throw new Error("Error al enviar el pedido");
+      return response.json();
+    })
+    .then(function () {
+      order = [];
+      saveOrder();
+      updateOrder();
+      document.getElementById("cart-view").hidden = true;
+      document.getElementById("thank-you-view").hidden = false;
+    })
+    .catch(function () {
+      submitButton.disabled = false;
+      submitButton.textContent = "Finalizar pedido";
+      document.getElementById("order-message").textContent =
+        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a hola@geckocoffee.com.py.";
+    });
 }
+
+updateOrder();
