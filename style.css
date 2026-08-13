@@ -1576,9 +1576,8 @@ cart-toast {
 .catalogue-background {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(1100px, 90%);
+  left: 0;
+  width: 100%;
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
