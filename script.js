@@ -10,19 +10,9 @@ function showToast(message) {
     toast = document.createElement("div");
     toast.id = "cart-toast";
     toast.className = "cart-toast";
-    toast.innerHTML =
-      '<p id="cart-toast-text"></p>' +
-      '<a href="cart.html" class="cart-toast-link">Ver carrito →</a>';
+    toast.innerHTML = '<span id="cart-toast-text"></span><a href="cart.html">Ver carrito</a>';
     document.body.appendChild(toast);
   }
-
-  const cartIcon = document.querySelector(".cart-link");
-  if (cartIcon) {
-    const rect = cartIcon.getBoundingClientRect();
-    toast.style.top = (rect.bottom + 12) + "px";
-    toast.style.right = (window.innerWidth - rect.right) + "px";
-  }
-
   document.getElementById("cart-toast-text").textContent = message;
   toast.classList.add("visible");
   clearTimeout(toast._hideTimeout);
