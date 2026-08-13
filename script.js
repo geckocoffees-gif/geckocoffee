@@ -10,9 +10,12 @@ function showToast(message) {
     toast = document.createElement("div");
     toast.id = "cart-toast";
     toast.className = "cart-toast";
-    toast.innerHTML = '<span id="cart-toast-text"></span><a href="cart.html">Ver carrito</a>';
+    toast.innerHTML =
+      '<span id="cart-toast-text"></span>' +
+      '<a href="cart.html">Ver carrito</a>';
     document.body.appendChild(toast);
   }
+
   document.getElementById("cart-toast-text").textContent = message;
   toast.classList.add("visible");
   clearTimeout(toast._hideTimeout);
@@ -136,6 +139,47 @@ function submitOrder(event) {
       submitButton.textContent = "Finalizar pedido";
       document.getElementById("order-message").textContent =
         "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@gmail.com.";
+    });
+}
+
+function submitContactForm(event) {
+  event.preventDefault();
+
+  const payload = {
+    "Nombre": document.getElementById("contact-name").value,
+    "Email": document.getElementById("contact-email").value,
+    "Consulta": document.getElementById("contact-message").value,
+    "_subject": "Nueva consulta - Gecko Coffee"
+  };
+
+  const submitButton = event.target.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = "Enviando...";
+
+  fetch("https://formsubmit.co/ajax/geckocoffees@gmail.com", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(payload)
+  })
+    .then(function (response) {
+      if (!response.ok) throw new Error("Error al enviar la consulta");
+      return response.json();
+    })
+    .then(function () {
+      event.target.reset();
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar consulta";
+      document.getElementById("contact-form-message").textContent =
+        "¡Gracias! Te responderemos a la brevedad.";
+    })
+    .catch(function () {
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar consulta";
+      document.getElementById("contact-form-message").textContent =
+        "Hubo un problema al enviar tu consulta. Escribinos directamente a geckocoffees@gmail.com.";
     });
 }
 
