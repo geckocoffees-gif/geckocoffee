@@ -1216,3 +1216,65 @@ footer p {
   background: transparent;
   color: #24211d;
 }
+
+.order-item span {
+  flex: 1;
+}
+
+.order-item .remove-item {
+  background: none;
+  border: none;
+  color: #24211d;
+  opacity: 0.5;
+  font-size: 0.9rem;
+  margin-left: 12px;
+}
+
+.order-item .remove-item:hover {
+  opacity: 1;
+}
+
+.order-total-row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#order-form button[type="submit"] {
+  padding: 15px 30px;
+  border: 1px solid #24211d;
+  border-radius: 50px;
+  background: #24211d;
+  color: #f5f1e8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+#order-form button[type="submit"]:hover:not(:disabled) {
+  background: transparent;
+  color: #24211d;
+}
+
+.thank-you-box {
+  text-align: center;
+  padding: 60px 30px;
+}
+
+.thank-you-box h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 20px;
+}
+
+.thank-you-box p {
+  font-size: 1.05rem;
+  opacity: 0.75;
+  max-width: 500px;
+  margin: 0 auto;
+}
