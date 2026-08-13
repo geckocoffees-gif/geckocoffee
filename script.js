@@ -4,6 +4,23 @@ function saveOrder() {
   localStorage.setItem("geckoOrder", JSON.stringify(order));
 }
 
+function showToast(message) {
+  let toast = document.getElementById("cart-toast");
+  if (!toast) {
+    toast = document.createElement("div");
+    toast.id = "cart-toast";
+    toast.className = "cart-toast";
+    toast.innerHTML = '<span id="cart-toast-text"></span><a href="cart.html">Ver carrito</a>';
+    document.body.appendChild(toast);
+  }
+  document.getElementById("cart-toast-text").textContent = message;
+  toast.classList.add("visible");
+  clearTimeout(toast._hideTimeout);
+  toast._hideTimeout = setTimeout(function () {
+    toast.classList.remove("visible");
+  }, 3000);
+}
+
 function addToOrder(product, grind, size, unitPrice, quantity) {
   quantity = quantity || 1;
   order.push({
@@ -15,7 +32,7 @@ function addToOrder(product, grind, size, unitPrice, quantity) {
   });
   saveOrder();
   updateOrder();
-  window.location.href = "cart.html";
+  showToast(quantity + " × " + product + " añadido al carrito");
 }
 
 function removeFromOrder(index) {
@@ -118,7 +135,7 @@ function submitOrder(event) {
       submitButton.disabled = false;
       submitButton.textContent = "Finalizar pedido";
       document.getElementById("order-message").textContent =
-        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@.com";
+        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@gmail.com.";
     });
 }
 
