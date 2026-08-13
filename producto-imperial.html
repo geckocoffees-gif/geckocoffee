@@ -286,6 +286,96 @@
 
   </script>
 
+  <script>
+
+let selectedSize = null;
+let selectedGrind = null;
+
+function changeProductImage(image, alt, thumbnail) {
+
+  document.getElementById("main-product-image").src = image;
+  document.getElementById("main-product-image").alt = alt;
+
+  document.querySelectorAll(".product-thumbnail").forEach(item => {
+    item.classList.remove("active");
+  });
+
+  thumbnail.classList.add("active");
+}
+
+
+function selectSize(button, size) {
+
+  document.querySelectorAll(".selection-option").forEach(option => {
+    if (!option.classList.contains("disabled")) {
+      option.classList.remove("active");
+    }
+  });
+
+  button.classList.add("active");
+
+  selectedSize = size;
+
+  checkSelections();
+}
+
+
+function selectGrind(button, grind) {
+
+  document.querySelectorAll(".selection-option").forEach(option => {
+    if (!option.classList.contains("disabled")) {
+      option.classList.remove("active");
+    }
+  });
+
+  button.classList.add("active");
+
+  selectedGrind = grind;
+
+  checkSelections();
+}
+
+
+function checkSelections() {
+
+  const button = document.getElementById("add-to-cart-button");
+  const message = document.getElementById("selection-message");
+
+  if (selectedSize && selectedGrind) {
+
+    button.disabled = false;
+
+    message.textContent =
+      selectedSize + " · " + selectedGrind;
+
+  } else {
+
+    button.disabled = true;
+
+    message.textContent =
+      "Seleccioná el tamaño y la presentación";
+
+  }
+}
+
+
+function addSelectedToOrder() {
+
+  if (!selectedSize || !selectedGrind) {
+    return;
+  }
+
+  addToOrder(
+    "Imperial — " +
+    selectedSize +
+    " — " +
+    selectedGrind
+  );
+
+}
+
+</script>
+
   <script src="script.js"></script>
 
 </body>
