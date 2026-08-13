@@ -186,9 +186,10 @@
 </footer>
 
 <script>
-  let selectedGrind = "En granos"; // preselected, always
-  let selectedSize = null;
-  let selectedSizePrice = null;
+  let selectedGrind = "En granos";
+  let selectedSize = "350 g";
+  let selectedSizePrice = 90000;
+  let quantity = 1;
 
   function changeProductImage(image, alt, thumbnail) {
     document.getElementById("main-product-image").src = image;
@@ -207,7 +208,7 @@
     });
     button.classList.add("active");
     selectedGrind = button.dataset.grind;
-    checkSelection();
+    updateSelectionMessage();
   }
 
   function selectSize(button) {
@@ -217,24 +218,23 @@
     button.classList.add("active");
     selectedSize = button.dataset.size;
     selectedSizePrice = Number(button.dataset.price);
-    checkSelection();
+    document.getElementById("selected-price").textContent =
+      selectedSizePrice.toLocaleString("es-PY") + " Gs";
+    updateSelectionMessage();
   }
 
-  function checkSelection() {
-    const button = document.getElementById("add-to-cart-button");
-    const message = document.getElementById("selection-message");
-    if (selectedSize) {
-      button.disabled = false;
-      message.textContent = selectedGrind + " · " + selectedSize;
-    } else {
-      button.disabled = true;
-      message.textContent = "Seleccioná el tamaño";
-    }
+  function changeQuantity(delta) {
+    quantity = Math.max(1, quantity + delta);
+    document.getElementById("quantity-value").textContent = quantity;
+  }
+
+  function updateSelectionMessage() {
+    document.getElementById("selection-message").textContent =
+      selectedSize + " · " + selectedGrind;
   }
 
   function addSelectedToOrder() {
-    if (!selectedSize) return;
-    addToOrder("Imperial", selectedGrind, selectedSize, selectedSizePrice);
+    addToOrder("Imperial", selectedGrind, selectedSize, selectedSizePrice, quantity);
   }
 </script>
 
