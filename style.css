@@ -35,17 +35,42 @@ button {
    HEADER
 ========================= */
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 6%;
-  background: rgba(245, 241, 232, 0.95);
-  border-bottom: 1px solid rgba(36, 33, 29, 0.12);
-  backdrop-filter: blur(10px);
+.site-header nav a:not(.cart-link) {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding-bottom: 4px;
+  transition: color 0.25s ease;
+}
+
+.site-header nav a:not(.cart-link)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1.5px;
+  background: #8c6247;
+  transition: width 0.3s ease;
+}
+
+.site-header nav a:not(.cart-link):hover {
+  color: #8c6247;
+}
+
+.site-header nav a:not(.cart-link):hover::after {
+  width: 100%;
+}
+
+.cart-link {
+  transition: all 0.25s ease;
+}
+
+.cart-link:hover {
+  background: #24211d;
+  color: #f5f1e8;
 }
 
 .logo {
