@@ -1,125 +1,82 @@
-let order = JSON.parse(localStorage.getItem("geckoOrder") || "[]");
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tu pedido — Gecko Coffee</title>
+<meta name="description" content="Revisá tu pedido y completá tus datos para finalizarlo.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-function saveOrder() {
-  localStorage.setItem("geckoOrder", JSON.stringify(order));
-}
+<header class="site-header">
+<a href="index.html" class="logo">
+<img src="logo-gecko.png" alt="Gecko Coffee">
+<span>GECKO<span>COFFEE</span></span>
+</a>
+<nav>
+<a href="index.html">Inicio</a>
+<a href="cafes.html">Cafés</a>
+<a href="index.html#nosotros">Nosotros</a>
+<a href="index.html#contacto">Contacto</a>
+<a href="cart.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+</nav>
+</header>
 
-function addToOrder(product, grind, size, unitPrice, quantity) {
-  quantity = quantity || 1;
-  order.push({
-    product: product,
-    grind: grind,
-    size: size,
-    unitPrice: unitPrice,
-    quantity: quantity
-  });
-  saveOrder();
-  updateOrder();
-  window.location.href = "cart.html";
-}
+<main>
+<section class="catalogue-intro">
+<p class="eyebrow">GECKO COFFEE</p>
+<h1>Tu pedido</h1>
+<p>Revisá los cafés que elegiste y completá tus datos para finalizarlo.</p>
+</section>
 
-function removeFromOrder(index) {
-  order.splice(index, 1);
-  saveOrder();
-  updateOrder();
-}
+<section class="order">
 
-function formatGs(amount) {
-  return amount.toLocaleString("es-PY") + " Gs";
-}
+  <div class="order-box" id="cart-view">
 
-function updateOrder() {
-  const countEl = document.getElementById("cart-count");
-  if (countEl) {
-    countEl.textContent = order.length;
-  }
+    <div id="order-list">
+      <p class="empty">Todavía no agregaste ningún café.</p>
+    </div>
 
-  const list = document.getElementById("order-list");
-  const form = document.getElementById("order-form");
+    <div class="order-total-row">
+      <span>Total</span>
+      <strong id="order-total">0 Gs</strong>
+    </div>
 
-  if (!list) return;
+    <div class="order-actions">
+      <a href="cafes.html" class="button light" style="border: 1px solid #24211d;">
+        Seguir viendo cafés
+      </a>
+    </div>
 
-  if (!order.length) {
-    list.innerHTML = '<p class="empty">Todavía no agregaste ningún café.</p>';
-    if (form) form.hidden = true;
-  } else {
-    list.innerHTML = order
-      .map(function (item, index) {
-        return (
-          '<div class="order-item">' +
-          "<span>" + item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + "</span>" +
-          "<strong>" + formatGs(item.unitPrice * item.quantity) + "</strong>" +
-          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')">✕</button>' +
-          "</div>"
-        );
-      })
-      .join("");
-    if (form) form.hidden = false;
-  }
+    <form id="order-form" onsubmit="submitOrder(event)" hidden>
+      <input type="text" id="customer-name" placeholder="Nombre y apellido" required>
+      <input type="email" id="customer-email" placeholder="Email" required>
+      <input type="tel" id="customer-phone" placeholder="WhatsApp (opcional)">
+      <textarea id="customer-address" placeholder="Dirección de entrega" rows="3" required></textarea>
+      <button type="submit">Finalizar pedido</button>
+    </form>
 
-  const totalEl = document.getElementById("order-total");
-  if (totalEl) {
-    const total = order.reduce(function (sum, item) {
-      return sum + (item.unitPrice * item.quantity);
-    }, 0);
-    totalEl.textContent = formatGs(total);
-  }
-}
+    <p id="order-message" class="order-message"></p>
 
-function submitOrder(event) {
-  event.preventDefault();
+  </div>
 
-  if (!order.length) return;
+  <div class="order-box thank-you-box" id="thank-you-view" hidden>
+    <h2>¡Gracias por tu pedido!</h2>
+    <p>Te contactaremos a la brevedad para coordinar el pago y los detalles de envío.</p>
+  </div>
 
-  const details = order
-    .map(function (item) {
-      return item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity);
-    })
-    .join("\n");
+</section>
+</main>
 
-  const total = order.reduce(function (sum, item) {
-    return sum + (item.unitPrice * item.quantity);
-  }, 0);
+<footer>
+<div class="logo">
+<img src="logo-gecko.png" alt="Gecko Coffee">
+<span>GECKO<span>COFFEE</span></span>
+</div>
+<p>© 2026 Gecko Coffee · Café de especialidad</p>
+</footer>
 
-  const payload = {
-    "Cliente": document.getElementById("customer-name").value,
-    "Email": document.getElementById("customer-email").value,
-    "WhatsApp": document.getElementById("customer-phone").value || "No indicado",
-    "Direccion de entrega": document.getElementById("customer-address").value,
-    "Pedido": details,
-    "Total": formatGs(total),
-    "_subject": "Nuevo pedido - Gecko Coffee"
-  };
-
-  const submitButton = event.target.querySelector('button[type="submit"]');
-  submitButton.disabled = true;
-  submitButton.textContent = "Enviando...";
-
-  fetch("https://formsubmit.co/ajax/hola@geckocoffee.com.py", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(payload)
-  })
-    .then(function (response) {
-      if (!response.ok) throw new Error("Error al enviar el pedido");
-      return response.json();
-    })
-    .then(function () {
-      order = [];
-      saveOrder();
-      updateOrder();
-      document.getElementById("cart-view").hidden = true;
-      document.getElementById("thank-you-view").hidden = false;
-    })
-    .catch(function () {
-      submitButton.disabled = false;
-      submitButton.textContent = "Finalizar pedido";
-      document.getElementById("order-message").textContent =
-        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a hola@geckocoffee.com.py.";
-    });
-}
-
-updateOrder();
+<script src="script.js"></script>
+</body>
+</html>
