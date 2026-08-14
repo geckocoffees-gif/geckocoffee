@@ -1866,3 +1866,31 @@ footer p {
   }
 
 }
+
+.sold-out-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(36, 33, 29, 0.12);
+  color: rgba(36, 33, 29, 0.45);
+  border: 1px solid rgba(36, 33, 29, 0.15);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: line-through;
+  white-space: nowrap;
+  cursor: not-allowed;
+}
+
+.add-to-cart-button.sold-out-button {
+  width: 100%;
+  padding: 15px 22px;
+  font-size: 0.8rem;
+}
+
+.sold-out-message {
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  opacity: 0.65;
+}
