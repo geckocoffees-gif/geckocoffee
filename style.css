@@ -1464,54 +1464,6 @@ cart-toast {
   text-align: left;
 }
 
-#contact-form {
-  display: grid;
-  gap: 14px;
-}
-
-#contact-form input,
-#contact-form textarea {
-  width: 100%;
-  padding: 13px 16px;
-  border: 1px solid rgba(36, 33, 29, 0.15);
-  border-radius: 10px;
-  background: #ffffff;
-  color: #24211d;
-  font: inherit;
-  font-size: 0.92rem;
-  transition: border-color 0.2s ease;
-}
-
-#contact-form input:focus,
-#contact-form textarea:focus {
-  outline: none;
-  border-color: #24211d;
-}
-
-#contact-form textarea {
-  resize: vertical;
-  min-height: 90px;
-}
-
-#contact-form button {
-  justify-self: start;
-  margin-top: 4px;
-  padding: 13px 28px;
-  border: none;
-  border-radius: 50px;
-  background: #24211d;
-  color: #f5f1e8;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: all 0.2s ease;
-}
-
-#contact-form button:hover:not(:disabled) {
-  background: #3a352d;
-  transform: translateY(-1px);
-}
 .contact-details {
   margin-top: 40px;
   display: flex;
