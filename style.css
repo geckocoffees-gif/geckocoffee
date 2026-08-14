@@ -1601,28 +1601,28 @@ cart-toast {
 ========================= */
 
 .values-section {
-  padding: 150px 8%;
-  background: #f5f1e8;
+  padding: 170px 6%;
+  background: #fbf9f5;
   text-align: center;
 }
 
 .values-section .section-heading {
-  margin: 0 auto 70px;
+  margin: 0 auto 100px;
 }
 
 .values-section h2 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2.6rem, 5vw, 4rem);
   font-weight: 400;
   letter-spacing: -0.02em;
 }
 
 .values-grid {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 80px;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 100px;
 }
 
 .value-item {
@@ -1632,44 +1632,49 @@ cart-toast {
 }
 
 .value-icon {
-  width: 110px;
-  height: 110px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
-  margin-bottom: 22px;
+  margin-bottom: 36px;
   transition: transform 0.3s ease;
 }
 
 .value-item:hover .value-icon {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 .value-item h3 {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   font-weight: 400;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
 }
 
 .value-item p {
-  font-size: 0.98rem;
-  line-height: 1.65;
+  font-size: 1.05rem;
+  line-height: 1.75;
   opacity: 0.72;
-  max-width: 280px;
+  max-width: 300px;
 }
 
 @media (max-width: 900px) {
   .values-grid {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 70px;
   }
 }
 
 @media (max-width: 700px) {
   .values-section {
-    padding: 100px 7%;
+    padding: 110px 7%;
   }
 
   .values-section .section-heading {
-    margin-bottom: 50px;
+    margin-bottom: 60px;
+  }
+
+  .value-icon {
+    width: 120px;
+    height: 120px;
   }
 }
