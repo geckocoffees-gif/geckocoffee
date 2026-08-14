@@ -1570,13 +1570,14 @@ cart-toast {
   fill: #ffffff;
 }
 
-.catalogue-intro {
-  background: #fbf9f5;
-}
 
 .catalogue {
   position: relative;
   overflow: hidden;
+  background: #fbf9f5;
+}
+
+.light-page {
   background: #fbf9f5;
 }
 
