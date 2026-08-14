@@ -77,51 +77,12 @@
       </div>
 
       <div class="purchase">
-
-        <div class="purchase-group">
-          <p class="purchase-label">Presentación</p>
-          <div class="selection-row">
-            <button type="button" class="selection-option active" data-grind="En granos" onclick="selectGrind(this)">
-              En granos
-            </button>
-            <button type="button" class="selection-option disabled" disabled>
-              Molido
-            </button>
-          </div>
-        </div>
-
-        <div class="purchase-group">
-          <p class="purchase-label">Tamaño</p>
-          <div class="selection-row">
-            <button type="button" class="selection-option active" data-size="350 g" data-price="75000" onclick="selectSize(this)">
-              350 g
-            </button>
-            <button type="button" class="selection-option" data-size="1 kg" data-price="200000" onclick="selectSize(this)">
-              1 kg
-            </button>
-          </div>
-          <div class="selected-price" id="selected-price">75.000 Gs</div>
-        </div>
-
-        <div class="purchase-group">
-          <p class="purchase-label">Cantidad</p>
-          <div class="quantity-selector">
-            <button type="button" class="qty-btn" onclick="changeQuantity(-1)">−</button>
-            <span id="quantity-value">1</span>
-            <button type="button" class="qty-btn" onclick="changeQuantity(1)">+</button>
-          </div>
-        </div>
-
-        <button
-          type="button"
-          id="add-to-cart-button"
-          class="add-to-cart-button"
-          onclick="addSelectedToOrder()"
-        >
-          Añadir al carrito
-        </button>
-        <p id="selection-message" class="selection-message">350 g · En granos</p>
-      </div>
+  <p class="sold-out-message">Este café está agotado por el momento.</p>
+  <button type="button" class="add-to-cart-button sold-out-button" disabled>
+    Agotado
+  </button>
+</div>
+<a href="cafes.html" class="back-link">← Volver a nuestros cafés</a>
 
       <a href="cafes.html" class="back-link">← Volver a nuestros cafés</a>
 
