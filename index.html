@@ -74,97 +74,95 @@
 
   <!-- HERO -->
 
- </section>
-  
-<section class="values-section">
-  <div class="values-heading">
-    <span class="values-label">Nuestros valores</span>
-    <span class="values-rule"></span>
-  </div>
+  <section class="hero-v2" id="inicio">
+    <img src="hero.jpg" alt="Cerezas de café en la planta" class="hero-v2-image">
+    <div class="hero-v2-overlay"></div>
+    <div class="hero-v2-content">
+      <div class="hero-v2-kicker">
+        <span class="hero-v2-line"></span>
+        Micro-tostadura · Café de especialidad
+        <span class="hero-v2-line"></span>
+      </div>
+      <h1>Descubrí la belleza del café</h1>
+      <a href="cafes.html" class="hero-v2-button">Nuestros cafés</a>
+    </div>
+  </section>
 
-  <div class="values-grid">
-    <div class="value-item">
-      <div class="value-number">01</div>
-      <h3>Frescura</h3>
-      <p>Tostamos según los pedidos para que llegue fresco y conserve toda su expresión.</p>
+
+  <!-- VALUES -->
+
+  <section class="values-section">
+    <div class="values-heading">
+      <span class="values-label">Nuestros valores</span>
+      <span class="values-rule"></span>
     </div>
 
-    <div class="value-item">
-      <div class="value-number">02</div>
-      <h3>Origen</h3>
-      <p>Seleccionamos cafés de productores que comparten nuestra búsqueda por calidad y carácter.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-number">01</div>
+        <h3>Frescura</h3>
+        <p>Tostamos según los pedidos para que llegue fresco y conserve toda su expresión.</p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">02</div>
+        <h3>Origen</h3>
+        <p>Seleccionamos cafés de productores que comparten nuestra búsqueda por calidad y carácter.</p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">03</div>
+        <h3>Transparencia</h3>
+        <p>Te contamos todo lo que sabemos sobre cada café: productor, variedad, proceso y cosecha.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="value-item">
-      <div class="value-number">03</div>
-      <h3>Transparencia</h3>
-      <p>Te contamos todo lo que sabemos sobre cada café: productor, variedad, proceso y cosecha.</p>
+
+  <!-- NOSOTROS -->
+
+  <section class="nosotros-section" id="nosotros">
+    <div class="nosotros-image">
+      <img src="nosotros.jpg" alt="Preparación de café en Chemex">
     </div>
-  </div>
-</section>
-  
-
-  <!-- INTRODUCTION -->
-
-  <section
-    class="coffee-intro"
-    id="nosotros"
-  >
-
-    <h2>
-      Café que merece ser descubierto
-    </h2>
-
-
-<div class="coffee-intro-text">
-
-  <p>
-    Seleccionamos cafés de especialidad de productores
-    que comparten nuestra búsqueda por la <strong>calidad</strong>,
-    buscando preservar y expresar todo lo que hace
-    único a cada café.
-  </p>
-
-  <p>
-    Tostamos cada <strong>café fresco</strong> para vos, para que puedas
-    disfrutar de toda su <strong>belleza, complejidad y carácter</strong>.
-  </p>
-
-</div>
-
-
+    <div class="nosotros-content">
+      <span class="nosotros-label">Nosotros</span>
+      <h2>Tostamos en pequeños lotes</h2>
+      <div class="nosotros-rule"></div>
+      <p>No tostamos para llenar una estantería. Tostamos cuando llega tu pedido, en lotes chicos, ajustando el perfil a cada café para sacar lo mejor de su origen.</p>
+      <p>En cada bolsa vas a encontrar la fecha de tueste, el productor y el proceso. Así sabés exactamente qué estás tomando y en qué momento está.</p>
+      <a href="cafes.html" class="nosotros-button">Ver los cafés</a>
+    </div>
   </section>
 
 
   <!-- CONTACT -->
 
- <section class="contact" id="contacto">
-  <p class="eyebrow">CONTACTO</p>
-  <h2>¿Querés saber más sobre nuestros cafés?</h2>
-  <p>Escribinos y estaremos encantados de ayudarte a elegir tu próximo café.</p>
+  <section class="contact-v2" id="contacto">
+    <div class="contact-v2-info">
+      <span class="contact-v2-label">Contacto</span>
+      <h2>¿Querés saber más sobre nuestros cafés?</h2>
+      <p>Escribinos y estaremos encantados de ayudarte a elegir tu próximo café.</p>
+      <div class="contact-v2-links">
+        <a href="mailto:geckocoffees@gmail.com">geckocoffees@gmail.com</a>
+        <a href="https://wa.me/595981197868" target="_blank">WhatsApp · 0981 197 868</a>
+      </div>
+    </div>
 
-  <div class="contact-form-box">
-    <form id="contact-form" onsubmit="submitContactForm(event)">
-      <input type="text" id="contact-name" placeholder="Nombre" required>
-      <input type="email" id="contact-email" placeholder="Email" required>
-      <textarea id="contact-message" placeholder="Tu consulta" rows="4" required></textarea>
+    <form id="contact-form" class="contact-v2-form" onsubmit="submitContactForm(event)">
+      <label>Nombre
+        <input type="text" id="contact-name" required>
+      </label>
+      <label>Email
+        <input type="email" id="contact-email" required>
+      </label>
+      <label>Tu consulta
+        <textarea id="contact-message" rows="4" required></textarea>
+      </label>
       <button type="submit">Enviar consulta</button>
+      <p id="contact-form-message"></p>
     </form>
-    <p id="contact-form-message"></p>
-  </div>
-
-<div class="contact-details">
-  <a href="mailto:geckocoffees@gmail.com" class="contact-chip">
-    <span class="contact-icon">✉️</span>
-    geckocoffees@gmail.com
-  </a>
-
-  <a href="https://wa.me/595981197868" target="_blank" class="contact-chip">
-    <span class="contact-icon">💬</span>
-    0981 197 868
-  </a>
-</div>
-</section>
+  </section>
 
 
   <!-- FOOTER -->
