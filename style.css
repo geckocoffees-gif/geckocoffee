@@ -2006,3 +2006,32 @@ cart-toast {
     padding: 80px 6%;
   }
 }
+
+.site-header nav a:not(.cart-link):hover,
+.site-header nav a:not(.cart-link).active {
+  color: #b68235;
+}
+
+.site-header nav a:not(.cart-link)::after {
+  background: #b68235;
+}
+
+.site-header nav a:not(.cart-link).active::after,
+.site-header nav a:not(.cart-link):hover::after {
+  width: 100%;
+}
+
+.cart-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-link svg {
+  display: block;
+}
+
+#cart-count {
+  color: #7d5411;
+  font-variant-numeric: tabular-nums;
+}
