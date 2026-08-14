@@ -1589,6 +1589,7 @@ cart-toast {
   opacity: 0.12;
   z-index: 0;
   pointer-events: none;
+  display: none;
 }
 
 .coffee-grid {
