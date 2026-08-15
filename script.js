@@ -60,17 +60,27 @@ function updateOrder() {
   if (!list) return;
 
   if (!order.length) {
-    list.innerHTML = '<p class="empty">Todavía no agregaste ningún café.</p>';
+    list.innerHTML =
+      '<div class="order-empty">' +
+      '<p class="order-empty-title">Todavía no agregaste ningún café.</p>' +
+      '<p class="order-empty-sub">Elegí un grano y volvé por acá.</p>' +
+      '</div>';
     if (form) form.hidden = true;
   } else {
     list.innerHTML = order
       .map(function (item, index) {
         return (
           '<div class="order-item">' +
-          "<span>" + item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + "</span>" +
-          "<strong>" + formatGs(item.unitPrice * item.quantity) + "</strong>" +
-          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')">✕</button>' +
-          "</div>"
+          '<span class="order-item-qty">' + item.quantity + ' ×</span>' +
+          '<span class="order-item-info">' +
+          '<span class="order-item-name">' + item.product + '</span>' +
+          '<span class="order-item-detail">' + item.grind + ' · ' + item.size + '</span>' +
+          '</span>' +
+          '<span class="order-item-price">' + formatGs(item.unitPrice * item.quantity) + '</span>' +
+          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')" aria-label="Quitar del pedido">' +
+          '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>' +
+          '</button>' +
+          '</div>'
         );
       })
       .join("");
@@ -182,6 +192,7 @@ function submitContactForm(event) {
         "Hubo un problema al enviar tu consulta. Escribinos directamente a geckocoffees@gmail.com.";
     });
 }
+
 function injectWhatsappFloat() {
   if (document.getElementById("whatsapp-float")) return;
   const link = document.createElement("a");
