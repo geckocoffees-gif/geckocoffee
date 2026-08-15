@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">  
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -22,69 +22,88 @@
 <a href="cafes.html">Cafés</a>
 <a href="index.html#nosotros">Nosotros</a>
 <a href="index.html#contacto">Contacto</a>
-<a href="cart.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+<a href="cart.html" class="cart-link">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+<span id="cart-count">0</span>
+</a>
 </nav>
 </header>
 
 <main class="light-page">
-<section class="catalogue-intro">
-<p class="eyebrow">GECKO COFFEE</p>
-<h1>Tu pedido</h1>
-<p>Revisá los cafés que elegiste y completá tus datos para finalizarlo.</p>
-</section>
+<section class="cart-page">
 
-<section class="order">
+  <p class="cart-eyebrow">GECKO COFFEE</p>
+  <h1 class="cart-title">Tu pedido</h1>
+  <p class="cart-subtitle">Revisá los cafés que elegiste y completá tus datos para finalizarlo.</p>
 
-  <div class="order-box" id="cart-view">
+  <div id="cart-view">
 
-    <div id="order-list">
-      <p class="empty">Todavía no agregaste ningún café.</p>
-    </div>
+    <div id="order-list"></div>
 
     <div class="order-total-row">
-      <span>Total</span>
-      <strong id="order-total">0 Gs</strong>
+      <span class="order-total-label">Total</span>
+      <strong class="order-total-value" id="order-total">0 Gs</strong>
     </div>
 
     <div class="order-actions">
-      <a href="cafes.html" class="button light" style="border: 1px solid #24211d;">
-        Seguir comprando
-      </a>
+      <a href="cafes.html" class="outline-button">Seguir comprando</a>
     </div>
 
     <form id="order-form" onsubmit="submitOrder(event)" hidden>
-      <input type="text" id="customer-name" placeholder="Nombre y apellido" required>
-      <input type="email" id="customer-email" placeholder="Email" required>
-      <input type="tel" id="customer-phone" placeholder="WhatsApp (opcional)">
-      <textarea id="customer-address" placeholder="Dirección de entrega" rows="3" required></textarea>
-      <button type="submit">Finalizar pedido</button>
-    </form>
+      <p class="form-eyebrow">TUS DATOS</p>
+      <h2 class="form-heading">¿A dónde lo enviamos?</h2>
 
-    <p id="order-message" class="order-message"></p>
+      <div class="form-grid">
+        <label>
+          <span>Nombre y apellido</span>
+          <input type="text" id="customer-name" required>
+        </label>
+        <label>
+          <span>WhatsApp</span>
+          <input type="tel" id="customer-phone" placeholder="0981 000 000" required>
+        </label>
+        <label>
+          <span>Email</span>
+          <input type="email" id="customer-email" placeholder="ana@correo.com" required>
+        </label>
+        <label class="form-grid-full">
+          <span>Dirección de entrega</span>
+          <textarea id="customer-address" rows="3" placeholder="Calle, número, ciudad y alguna referencia" required></textarea>
+        </label>
+      </div>
+
+      <div class="order-form-actions">
+        <button type="submit">Finalizar pedido</button>
+        <span class="order-form-note">Te escribimos por WhatsApp para coordinar el pago y la entrega.</span>
+      </div>
+      <p class="delivery-note">*Delivery GRATIS en Ciudad del Este</p>
+
+      <p id="order-message" class="order-message"></p>
+    </form>
 
   </div>
 
-<div class="order-box thank-you-box" id="thank-you-view" hidden>
+  <div class="order-box thank-you-box" id="thank-you-view" hidden>
     <h2>¡Gracias por tu pedido!</h2>
     <p>Te contactaremos a la brevedad para coordinar el pago y los detalles de envío.</p>
   </div>
 
- <section class="help-box">
-  <p class="eyebrow">CONTACTO</p>
-  <h2>¿Tenés alguna duda?</h2>
-  <p>
-    Escribinos por WhatsApp o al
-    <a href="mailto:geckocoffees@gmail.com" class="email-link">geckocoffees@gmail.com</a>
-  </p>
+  <section class="help-box">
+    <p class="eyebrow">CONTACTO</p>
+    <h2>¿Tenés alguna duda?</h2>
+    <p>
+      Escribinos por WhatsApp o al
+      <a href="mailto:geckocoffees@gmail.com" class="email-link">geckocoffees@gmail.com</a>
+    </p>
 
-  <a href="https://wa.me/595981197868" target="_blank" class="whatsapp-contact">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      <path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.345 4.997L2 22l5.144-1.334a9.96 9.96 0 0 0 4.86 1.237h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.929-7.07a9.935 9.935 0 0 0-7.072-2.833zm0 18.187h-.003a8.19 8.19 0 0 1-4.17-1.144l-.299-.177-3.055.793.816-2.978-.194-.306a8.19 8.19 0 0 1-1.255-4.377c0-4.527 3.68-8.207 8.207-8.207 2.192 0 4.252.854 5.802 2.406a8.15 8.15 0 0 1 2.4 5.805c0 4.527-3.68 8.185-8.25 8.185z"/>
-    </svg>
-    0981 197 868
-  </a>
-</section>
+    <a href="https://wa.me/595981197868" target="_blank" class="whatsapp-contact">
+      <svg class="whatsapp-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.345 4.997L2 22l5.144-1.334a9.96 9.96 0 0 0 4.86 1.237h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.929-7.07a9.935 9.935 0 0 0-7.072-2.833zm0 18.187h-.003a8.19 8.19 0 0 1-4.17-1.144l-.299-.177-3.055.793.816-2.978-.194-.306a8.19 8.19 0 0 1-1.255-4.377c0-4.527 3.68-8.207 8.207-8.207 2.192 0 4.252.854 5.802 2.406a8.15 8.15 0 0 1 2.4 5.805c0 4.527-3.68 8.185-8.25 8.185z"/>
+      </svg>
+      0981 197 868
+    </a>
+  </section>
 
 </section>
 </main>
