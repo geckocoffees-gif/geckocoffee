@@ -494,22 +494,22 @@ button {
 }
 
 .coffee-buy-button {
-  padding: 10px 20px;
-  border: 1px solid #24211d;
-  border-radius: 50px;
-  background: #24211d;
-  color: #f5f1e8;
+  display: inline-block;
+  padding: 10px 22px;
+  border: 1px solid #b68235;
+  border-radius: 2px;
+  background: transparent;
+  color: #7d5411;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   white-space: nowrap;
 }
 
 .coffee-buy-button:hover {
-  background: transparent;
-  color: #24211d;
+  background: rgba(182, 130, 53, 0.12);
 }
 
 
