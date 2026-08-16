@@ -2029,9 +2029,8 @@ footer p {
   display: flex;
   align-items: baseline;
   gap: 20px;
-  max-width: 1300px;
-  margin: 0 auto 40px;
   padding: 0 6%;
+  margin-bottom: 40px;
 }
 
 .catalogue-label {
