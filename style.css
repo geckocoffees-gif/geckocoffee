@@ -1234,7 +1234,7 @@ footer p {
 .selection-option {
   padding: 14px 16px;
   border: 1px solid rgba(36, 33, 29, 0.25);
-  border-radius: 10px;
+  border-radius: 2px;
   background: transparent;
   color: #24211d;
   font-size: 0.85rem;
@@ -1248,13 +1248,13 @@ footer p {
 }
 
 .selection-option:hover:not(.disabled) {
-  border-color: #24211d;
+  border-color: #b68235;
 }
 
 .selection-option.active {
-  background: #24211d;
-  color: #f5f1e8;
-  border-color: #24211d;
+  background: rgba(182, 130, 53, 0.12);
+  color: #7d5411;
+  border-color: #b68235;
 }
 
 .selection-option .option-price {
