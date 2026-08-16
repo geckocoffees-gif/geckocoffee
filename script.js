@@ -63,7 +63,6 @@ function updateOrder() {
     list.innerHTML =
       '<div class="order-empty">' +
       '<p class="order-empty-title">Todavía no agregaste ningún café.</p>' +
-      '<p class="order-empty-sub">Elegí un grano y volvé por acá.</p>' +
       '</div>';
     if (form) form.hidden = true;
   } else {
