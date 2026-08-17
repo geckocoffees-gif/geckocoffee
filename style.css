@@ -2230,3 +2230,38 @@ footer p {
     padding: 28px 24px;
   }
 }
+
+.info-subhead {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 28px 0 10px;
+}
+
+.info-block p {
+  margin-bottom: 14px;
+}
+
+.info-block p:last-child {
+  margin-bottom: 0;
+}
+
+.info-faq-item {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(36, 33, 29, 0.08);
+}
+
+.info-question {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #24211d;
+}
+
+.info-answer {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: rgba(36, 33, 29, 0.75);
+}
