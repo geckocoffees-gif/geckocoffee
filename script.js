@@ -205,5 +205,76 @@ function injectWhatsappFloat() {
   document.body.appendChild(link);
 }
 
+function injectSideMenu() {
+  if (document.getElementById("side-menu")) return;
+
+  const header = document.querySelector(".site-header");
+  const logo = document.querySelector(".site-header .logo");
+  if (!header || !logo) return;
+
+  const toggle = document.createElement("button");
+  toggle.id = "menu-toggle";
+  toggle.className = "menu-toggle";
+  toggle.setAttribute("aria-label", "Abrir menú");
+  toggle.innerHTML =
+    '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "header-left";
+  header.insertBefore(wrapper, logo);
+  wrapper.appendChild(toggle);
+  wrapper.appendChild(logo);
+
+  const overlay = document.createElement("div");
+  overlay.id = "side-menu-overlay";
+  overlay.className = "side-menu-overlay";
+
+  const menu = document.createElement("nav");
+  menu.id = "side-menu";
+  menu.className = "side-menu";
+  menu.innerHTML =
+    '<button id="menu-close" class="menu-close" aria-label="Cerrar menú">' +
+    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>' +
+    '</button>' +
+    '<div class="side-menu-logo">' +
+    '<img src="logo-gecko.png" alt="Gecko Coffee">' +
+    '<span>GECKO<span>COFFEE</span></span>' +
+    '</div>' +
+    '<ul class="side-menu-list">' +
+    '<li><a href="cafes.html">Cafés</a></li>' +
+    '<li><a href="index.html#contacto">Contacto</a></li>' +
+    '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
+    '<li class="side-menu-group">' +
+    '<a href="informacion.html">Información</a>' +
+    '<ul class="side-menu-sublist">' +
+    '<li><a href="informacion.html#envios">Envíos</a></li>' +
+    '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
+    '<li><a href="informacion.html#preguntas">Preguntas frecuentes</a></li>' +
+    '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
+    '</ul>' +
+    '</li>' +
+    '</ul>';
+
+  document.body.appendChild(overlay);
+  document.body.appendChild(menu);
+
+  function openMenu() {
+    menu.classList.add("open");
+    overlay.classList.add("visible");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    menu.classList.remove("open");
+    overlay.classList.remove("visible");
+    document.body.style.overflow = "";
+  }
+
+  toggle.addEventListener("click", openMenu);
+  document.getElementById("menu-close").addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+}
+
 injectWhatsappFloat();
+injectSideMenu();
 updateOrder();
