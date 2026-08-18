@@ -275,6 +275,71 @@ function injectSideMenu() {
   overlay.addEventListener("click", closeMenu);
 }
 
+function injectFooter() {
+  const footer = document.querySelector("footer");
+  if (!footer || footer.dataset.enhanced) return;
+  footer.dataset.enhanced = "true";
+
+  footer.innerHTML =
+    '<div class="footer-grid">' +
+
+    '<div class="footer-brand">' +
+    '<div class="footer-logo">' +
+    '<img src="logo-gecko.png" alt="Gecko Coffee">' +
+    '<span>GECKO<span>COFFEE</span></span>' +
+    '</div>' +
+    '<p class="footer-tagline">Café de especialidad, tostado en pequeños lotes.</p>' +
+    '</div>' +
+
+    '<div class="footer-column">' +
+    '<h4>Comprar</h4>' +
+    '<ul>' +
+    '<li><a href="cafes.html">Nuestros cafés</a></li>' +
+    '<li><a href="guia-del-cafe.html">Cómo comprar</a></li>' +
+    '<li><a href="cart.html">Carrito</a></li>' +
+    '</ul>' +
+    '</div>' +
+
+    '<div class="footer-column">' +
+    '<h4>Ayuda</h4>' +
+    '<ul>' +
+    '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
+    '<li><a href="informacion.html#envios">Envíos</a></li>' +
+    '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
+    '<li><a href="informacion.html#preguntas">Preguntas frecuentes</a></li>' +
+    '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
+    '</ul>' +
+    '</div>' +
+
+    '<div class="footer-column footer-contact">' +
+    '<h4>Contacto</h4>' +
+    '<ul class="footer-contact-list">' +
+    '<li>' +
+    '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg>' +
+    '<span>Ciudad del Este, km 4, Paraguay</span>' +
+    '</li>' +
+    '<li>' +
+    '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"></path></svg>' +
+    '<a href="https://wa.me/595981197868" target="_blank">0981 197 868</a>' +
+    '</li>' +
+    '<li>' +
+    '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 6-10 7L2 6"></path></svg>' +
+    '<a href="mailto:geckocoffees@gmail.com">geckocoffees@gmail.com</a>' +
+    '</li>' +
+    '</ul>' +
+    '<a href="#" target="_blank" class="footer-instagram">' +
+    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"></circle></svg>' +
+    'Seguinos en Instagram' +
+    '</a>' +
+    '</div>' +
+
+    '</div>' +
+    '<div class="footer-bottom">' +
+    '<p>© 2026 Gecko Coffee · Café de especialidad</p>' +
+    '</div>';
+}
+
 injectWhatsappFloat();
 injectSideMenu();
+injectFooter();
 updateOrder();
