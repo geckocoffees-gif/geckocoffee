@@ -1050,20 +1050,145 @@ button {
 ========================= */
 
 footer {
-  padding: 35px 6%;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  align-items: center;
+  padding: 70px 6% 30px;
   background: #1d1b18;
   color: #f5f1e8;
 }
 
-footer p {
-  font-size: 0.78rem;
-  opacity: 0.55;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.3fr;
+  gap: 50px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(245, 241, 232, 0.12);
 }
 
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-bottom: 16px;
+}
+
+.footer-logo img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.footer-logo span > span {
+  font-weight: 400;
+  margin-left: 3px;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: rgba(245, 241, 232, 0.6);
+  max-width: 240px;
+  line-height: 1.6;
+}
+
+.footer-column h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e1ad66;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column a {
+  font-size: 0.9rem;
+  color: rgba(245, 241, 232, 0.75);
+  transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+  color: #e1ad66;
+}
+
+.footer-contact-list {
+  margin-bottom: 24px;
+}
+
+.footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: rgba(245, 241, 232, 0.75);
+  line-height: 1.5;
+}
+
+.footer-contact-list li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #e1ad66;
+}
+
+.footer-contact-list a {
+  color: rgba(245, 241, 232, 0.75);
+}
+
+.footer-contact-list a:hover {
+  color: #e1ad66;
+}
+
+.footer-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border: 1px solid rgba(245, 241, 232, 0.3);
+  border-radius: 2px;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: #f5f1e8;
+  transition: all 0.2s ease;
+}
+
+.footer-instagram:hover {
+  border-color: #e1ad66;
+  background: rgba(225, 173, 102, 0.08);
+}
+
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 26px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.78rem;
+  opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
 
 /* =========================
    PRODUCT PAGE
