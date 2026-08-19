@@ -985,56 +985,62 @@ button {
   text-align: center;
 }
 
-.help-box .eyebrow {
-  margin-bottom: 16px;
+.help-box-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7d5411;
+  font-weight: 600;
 }
 
 .help-box h2 {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-style: italic;
   font-weight: 400;
-  letter-spacing: -0.02em;
-  margin-bottom: 22px;
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  margin: 14px 0 18px;
 }
 
-.help-box p {
-  font-size: 1.05rem;
-  opacity: 0.78;
-  margin-bottom: 6px;
+.help-box-rule {
+  width: 48px;
+  height: 1px;
+  background: #b68235;
+  margin: 0 auto 26px;
 }
 
-.email-link {
-  color: #7d5411;
-  font-weight: 600;
-  text-decoration: underline;
+.help-box > p {
+  font-size: 1rem;
+  color: rgba(36, 33, 29, 0.7);
+  margin-bottom: 34px;
 }
 
-.email-link:hover {
-  opacity: 0.75;
+.help-box-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 34px;
 }
 
-.whatsapp-contact {
-  display: inline-flex;
+.help-box-row {
+  display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 28px;
-  padding: 13px 24px;
-  border: 1px solid rgba(36, 33, 29, 0.25);
-  border-radius: 2px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #24211d;
-  transition: all 0.2s ease;
+  font-size: 0.98rem;
 }
 
-.whatsapp-contact:hover {
-  border-color: #24211d;
-  background: rgba(36, 33, 29, 0.05);
-}
-
-.whatsapp-icon {
-  color: #25d366;
+.help-box-row svg {
+  color: #b68235;
   flex-shrink: 0;
+}
+
+.help-box-row a,
+.help-box-row span {
+  color: #24211d;
+}
+
+.help-box-row a:hover {
+  color: #7d5411;
 }
 
 
