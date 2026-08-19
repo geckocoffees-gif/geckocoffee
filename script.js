@@ -242,10 +242,14 @@ function injectSideMenu() {
     '</div>' +
     '<ul class="side-menu-list">' +
     '<li><a href="cafes.html">Cafés</a></li>' +
-    '<li><a href="index.html#contacto">Contacto</a></li>' +
     '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
     '<li class="side-menu-group">' +
+    '<div class="side-menu-group-row">' +
     '<a href="informacion.html">Información</a>' +
+    '<button type="button" class="side-menu-arrow" aria-label="Mostrar subsecciones" aria-expanded="false">' +
+    '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
+    '</button>' +
+    '</div>' +
     '<ul class="side-menu-sublist">' +
     '<li><a href="informacion.html#envios">Envíos</a></li>' +
     '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
@@ -253,6 +257,7 @@ function injectSideMenu() {
     '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
     '</ul>' +
     '</li>' +
+    '<li><a href="index.html#contacto">Contacto</a></li>' +
     '</ul>';
 
   document.body.appendChild(overlay);
@@ -273,6 +278,16 @@ function injectSideMenu() {
   toggle.addEventListener("click", openMenu);
   document.getElementById("menu-close").addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
+
+  const arrowBtn = menu.querySelector(".side-menu-arrow");
+  if (arrowBtn) {
+    arrowBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      const group = arrowBtn.closest(".side-menu-group");
+      const isOpen = group.classList.toggle("expanded");
+      arrowBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
 }
 
 function injectFooter() {
