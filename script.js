@@ -284,12 +284,17 @@ function injectFooter() {
     '<div class="footer-grid">' +
 
     '<div class="footer-brand">' +
-    '<div class="footer-logo">' +
-    '<img src="logo-gecko.png" alt="Gecko Coffee">' +
-    '<span>GECKO<span>COFFEE</span></span>' +
-    '</div>' +
-    '<p class="footer-tagline">Café de especialidad, tostado en pequeños lotes.</p>' +
-    '</div>' +
+'<p class="footer-wordmark">Gecko Coffee</p>' +
+'<p class="footer-tagline">Café de especialidad</p>' +
+'<div class="footer-social">' +
+'<a href="https://www.instagram.com" target="_blank" aria-label="Instagram">' +
+'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>' +
+'</a>' +
+'<a href="https://www.facebook.com" target="_blank" aria-label="Facebook">' +
+'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"></path></svg>' +
+'</a>' +
+'</div>' +
+'</div>' +
 
     '<div class="footer-column">' +
     '<h4>Comprar</h4>' +
@@ -327,20 +332,6 @@ function injectFooter() {
     '<a href="mailto:geckocoffees@gmail.com">geckocoffees@gmail.com</a>' +
     '</li>' +
     '</ul>' +
-    '<a href="https://www.instagram.com" target="_blank" class="footer-instagram" aria-label="Seguinos en Instagram">' +
-'<svg viewBox="0 0 24 24" width="26" height="26">' +
-'<defs><linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">' +
-'<stop offset="0%" stop-color="#feda75"/>' +
-'<stop offset="25%" stop-color="#fa7e1e"/>' +
-'<stop offset="50%" stop-color="#d62976"/>' +
-'<stop offset="75%" stop-color="#962fbf"/>' +
-'<stop offset="100%" stop-color="#4f5bd5"/>' +
-'</linearGradient></defs>' +
-'<rect x="2" y="2" width="20" height="20" rx="6" fill="url(#igGradient)"/>' +
-'<circle cx="12" cy="12" r="4.2" fill="none" stroke="white" stroke-width="1.6"/>' +
-'<circle cx="17" cy="7" r="1.1" fill="white"/>' +
-'</svg>' +
-'</a>' +
     '</div>' +
 
     '</div>' +
