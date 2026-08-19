@@ -937,9 +937,9 @@ button {
 }
 
 .delivery-note {
-  margin-top: 10px;
-  font-size: 0.85rem;
-  color: #7d5411;
+  margin-top: 0;
+  font-size: 0.9rem;
+  color: rgba(36, 33, 29, 0.6);
 }
 
 .order-message {
