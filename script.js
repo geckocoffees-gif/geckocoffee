@@ -287,21 +287,6 @@ function injectSideMenu() {
   }
 }
 
-  toggle.addEventListener("click", openMenu);
-  document.getElementById("menu-close").addEventListener("click", closeMenu);
-  overlay.addEventListener("click", closeMenu);
-
-  const arrowBtn = menu.querySelector(".side-menu-arrow");
-  if (arrowBtn) {
-    arrowBtn.addEventListener("click", function (e) {
-      e.preventDefault();
-      const group = arrowBtn.closest(".side-menu-group");
-      const isOpen = group.classList.toggle("expanded");
-      arrowBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    });
-  }
-}
-
 function injectFooter() {
   const footer = document.querySelector("footer");
   if (!footer || footer.dataset.enhanced) return;
@@ -311,18 +296,18 @@ function injectFooter() {
     '<div class="footer-grid">' +
 
     '<div class="footer-brand">' +
-'<p class="footer-wordmark">Gecko Coffee</p>' +
-'<p class="footer-tagline">Café de especialidad</p>' +
-'<div class="footer-social">' +
-'<a href="https://www.instagram.com" target="_blank" aria-label="Instagram">' +
-'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>' +
-'</a>' +
-'<a href="https://www.facebook.com" target="_blank" aria-label="Facebook">' +
-'<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"></path></svg>' +
-'</a>' +
-'</div>' +
-'</div>' +
-    
+    '<p class="footer-wordmark">Gecko Coffee</p>' +
+    '<p class="footer-tagline">Café de especialidad</p>' +
+    '<div class="footer-social">' +
+    '<a href="https://www.instagram.com" target="_blank" aria-label="Instagram">' +
+    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>' +
+    '</a>' +
+    '<a href="https://www.facebook.com" target="_blank" aria-label="Facebook">' +
+    '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 3h-2a5 5 0 0 0-5 5v2H6v4h2v7h4v-7h3l1-4h-4V8a1 1 0 0 1 1-1h3z"></path></svg>' +
+    '</a>' +
+    '</div>' +
+    '</div>' +
+
     '<div class="footer-column">' +
     '<h4>Comprar</h4>' +
     '<ul>' +
