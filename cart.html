@@ -52,24 +52,23 @@
     <form id="order-form" onsubmit="submitOrder(event)" hidden>
       <h2 class="form-heading">Datos de entrega</h2>
       <div class="form-grid">
-        <label>
-          <span>Nombre y apellido</span>
-          <input type="text" id="customer-name" placeholder="Ana Gómez" required>
-        </label>
-        <label>
-          <span>WhatsApp</span>
-          <input type="tel" id="customer-phone" placeholder="0981 000 000" required>
-        </label>
-        <label>
-          <span>Email</span>
-          <input type="email" id="customer-email" placeholder="ana@correo.com" required>
-        </label>
-        <label class="form-grid-full">
-          <span>Dirección de entrega</span>
-          <textarea id="customer-address" rows="3" placeholder="Calle, número, ciudad y alguna referencia" required></textarea>
-        </label>
-      </div>
-
+  <label>
+    <span>Nombre y apellido</span>
+    <input type="text" id="customer-name" required>
+  </label>
+  <label>
+    <span>WhatsApp</span>
+    <input type="tel" id="customer-phone" required>
+  </label>
+  <label>
+    <span>Email</span>
+    <input type="email" id="customer-email" required>
+  </label>
+  <label class="form-grid-full">
+    <span>Dirección de entrega</span>
+    <textarea id="customer-address" rows="3" required></textarea>
+  </label>
+</div>
       <div class="order-form-actions">
         <button type="submit">Finalizar pedido</button>
         <span class="order-form-note">Te escribimos por WhatsApp para coordinar el pago y la entrega.</span>
