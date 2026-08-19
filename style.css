@@ -2323,33 +2323,33 @@ footer {
   color: #b68235;
 }
 
-.side-menu-group-row {
+.side-menu-group-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.side-menu-group-row a {
-  flex: 1;
-}
-
-.side-menu-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+  width: 100%;
+  padding: 18px 2px;
   background: none;
   border: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
   color: #24211d;
-  transition: transform 0.25s ease, color 0.2s ease;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s ease;
 }
 
-.side-menu-arrow:hover {
+.side-menu-group-toggle:hover {
   color: #b68235;
 }
 
-.side-menu-group.expanded .side-menu-arrow {
+.side-menu-arrow-icon {
+  flex-shrink: 0;
+  margin-left: 12px;
+  transition: transform 0.25s ease;
+}
+
+.side-menu-group.expanded .side-menu-arrow-icon {
   transform: rotate(180deg);
 }
 
@@ -2358,11 +2358,27 @@ footer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  padding-left: 4px;
+  border-left: 1px solid rgba(182, 130, 53, 0.35);
+  margin-left: 4px;
 }
 
 .side-menu-group.expanded .side-menu-sublist {
   max-height: 260px;
-  padding-bottom: 18px;
+  padding-bottom: 16px;
+}
+
+.side-menu-sublist li a {
+  display: block;
+  padding: 10px 0 10px 16px;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  color: rgba(36, 33, 29, 0.68);
+  transition: color 0.2s ease;
+}
+
+.side-menu-sublist li a:hover {
+  color: #b68235;
 }
 
 
