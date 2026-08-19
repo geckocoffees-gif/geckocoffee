@@ -2437,3 +2437,14 @@ footer {
   line-height: 1.85;
   color: rgba(36, 33, 29, 0.75);
 }
+
+.side-menu-group-row > a {
+  padding: 18px 2px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.side-menu-group-row > a:hover {
+  color: #b68235;
+}
