@@ -2469,3 +2469,9 @@ footer {
 .side-menu-group-row > a:hover {
   color: #b68235;
 }
+
+.cart-link.active {
+  background: rgba(182, 130, 53, 0.15);
+  border-color: #b68235;
+  color: #7d5411;
+}
