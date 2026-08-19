@@ -2323,23 +2323,46 @@ footer {
   color: #b68235;
 }
 
+.side-menu-group-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.side-menu-group-row a {
+  flex: 1;
+}
+
+.side-menu-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: #24211d;
+  transition: transform 0.25s ease, color 0.2s ease;
+}
+
+.side-menu-arrow:hover {
+  color: #b68235;
+}
+
+.side-menu-group.expanded .side-menu-arrow {
+  transform: rotate(180deg);
+}
+
 .side-menu-sublist {
   list-style: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.side-menu-group.expanded .side-menu-sublist {
+  max-height: 260px;
   padding-bottom: 18px;
-}
-
-.side-menu-sublist li a {
-  display: block;
-  padding: 9px 2px 9px 14px;
-  font-size: 0.92rem;
-  color: rgba(36, 33, 29, 0.72);
-  border-left: 1px solid rgba(36, 33, 29, 0.15);
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.side-menu-sublist li a:hover {
-  color: #b68235;
-  border-left-color: #b68235;
 }
 
 
