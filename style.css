@@ -902,10 +902,10 @@ button {
 
 .order-form-actions {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 16px 22px;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 34px;
 }
 
 #order-form button[type="submit"] {
@@ -937,7 +937,7 @@ button {
 }
 
 .delivery-note {
-  margin-top: 14px;
+  margin-top: 10px;
   font-size: 0.85rem;
   color: #7d5411;
 }
