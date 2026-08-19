@@ -284,7 +284,6 @@ function injectFooter() {
     '<div class="footer-grid">' +
 
     '<div class="footer-brand">' +
-'<img src="logo-gecko.png" alt="Gecko Coffee" class="footer-brand-logo">' +
 '<p class="footer-wordmark">Gecko Coffee</p>' +
 '<p class="footer-tagline">Café de especialidad</p>' +
 '<div class="footer-social">' +
@@ -296,7 +295,7 @@ function injectFooter() {
 '</a>' +
 '</div>' +
 '</div>' +
-
+    
     '<div class="footer-column">' +
     '<h4>Comprar</h4>' +
     '<ul>' +
