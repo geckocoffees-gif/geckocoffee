@@ -244,12 +244,10 @@ function injectSideMenu() {
     '<li><a href="cafes.html">Cafés</a></li>' +
     '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
     '<li class="side-menu-group">' +
-    '<div class="side-menu-group-row">' +
-    '<a href="informacion.html">Información</a>' +
-    '<button type="button" class="side-menu-arrow" aria-label="Mostrar subsecciones" aria-expanded="false">' +
-    '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
+    '<button type="button" class="side-menu-group-toggle" aria-expanded="false">' +
+    '<span>Información</span>' +
+    '<svg class="side-menu-arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
     '</button>' +
-    '</div>' +
     '<ul class="side-menu-sublist">' +
     '<li><a href="informacion.html#envios">Envíos</a></li>' +
     '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
@@ -274,6 +272,20 @@ function injectSideMenu() {
     overlay.classList.remove("visible");
     document.body.style.overflow = "";
   }
+
+  toggle.addEventListener("click", openMenu);
+  document.getElementById("menu-close").addEventListener("click", closeMenu);
+  overlay.addEventListener("click", closeMenu);
+
+  const groupToggle = menu.querySelector(".side-menu-group-toggle");
+  if (groupToggle) {
+    groupToggle.addEventListener("click", function () {
+      const group = groupToggle.closest(".side-menu-group");
+      const isOpen = group.classList.toggle("expanded");
+      groupToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
+}
 
   toggle.addEventListener("click", openMenu);
   document.getElementById("menu-close").addEventListener("click", closeMenu);
