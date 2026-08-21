@@ -413,4 +413,6 @@ function injectFooter() {
 injectWhatsappFloat();
 injectSideMenu();
 injectFooter();
+initGuideAccordion();
+initGuideVideos();
 updateOrder();
