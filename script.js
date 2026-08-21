@@ -242,7 +242,21 @@ function injectSideMenu() {
     '</div>' +
     '<ul class="side-menu-list">' +
     '<li><a href="cafes.html">Cafés</a></li>' +
-    '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
+
+    '<li class="side-menu-group">' +
+    '<button type="button" class="side-menu-group-toggle" aria-expanded="false">' +
+    '<span>Guía del café</span>' +
+    '<svg class="side-menu-arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
+    '</button>' +
+    '<ul class="side-menu-sublist">' +
+    '<li><a href="guia-del-cafe.html#conservacion">Conservación</a></li>' +
+    '<li><a href="guia-del-cafe.html#reposo">Reposo y frescura</a></li>' +
+    '<li><a href="guia-del-cafe.html#molienda">Molienda</a></li>' +
+    '<li><a href="guia-del-cafe.html#agua">Agua</a></li>' +
+    '<li><a href="guia-del-cafe.html#preparacion">Preparación</a></li>' +
+    '</ul>' +
+    '</li>' +
+
     '<li class="side-menu-group">' +
     '<button type="button" class="side-menu-group-toggle" aria-expanded="false">' +
     '<span>Información</span>' +
@@ -255,6 +269,7 @@ function injectSideMenu() {
     '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
     '</ul>' +
     '</li>' +
+
     '<li><a href="index.html#contacto">Contacto</a></li>' +
     '</ul>';
 
@@ -277,14 +292,57 @@ function injectSideMenu() {
   document.getElementById("menu-close").addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
 
-  const groupToggle = menu.querySelector(".side-menu-group-toggle");
-  if (groupToggle) {
-    groupToggle.addEventListener("click", function () {
-      const group = groupToggle.closest(".side-menu-group");
+  menu.querySelectorAll(".side-menu-group-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const group = btn.closest(".side-menu-group");
       const isOpen = group.classList.toggle("expanded");
-      groupToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
+  });
+}
+
+function initGuideAccordion() {
+  const items = document.querySelectorAll(".guide-item");
+  if (!items.length) return;
+
+  items.forEach(function (item) {
+    const btn = item.querySelector(".guide-toggle");
+    btn.addEventListener("click", function () {
+      const isOpen = item.classList.toggle("expanded");
+      btn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  });
+
+  const hash = window.location.hash.replace("#", "");
+  if (hash) {
+    const target = document.getElementById(hash);
+    if (target && target.classList.contains("guide-item")) {
+      target.classList.add("expanded");
+      const btn = target.querySelector(".guide-toggle");
+      if (btn) btn.setAttribute("aria-expanded", "true");
+      setTimeout(function () {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 150);
+    }
   }
+}
+
+function initGuideVideos() {
+  document.querySelectorAll(".guide-video[data-video-id]").forEach(function (el) {
+    const videoId = el.dataset.videoId;
+    if (!videoId) return;
+
+    el.innerHTML =
+      '<img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Miniatura del video">' +
+      '<div class="guide-video-play">' +
+      '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>' +
+      '</div>';
+
+    el.addEventListener("click", function () {
+      el.innerHTML =
+        '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/' + videoId + '?autoplay=1" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    }, { once: true });
+  });
 }
 
 function injectFooter() {
