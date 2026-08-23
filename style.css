@@ -2654,3 +2654,19 @@ footer {
     gap: 12px;
   }
 }
+
+.guide-intro {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guide-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 6% 140px;
+}
+
+.guide-content-inner p,
+.guide-checklist {
+  max-width: 700px;
+}
