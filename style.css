@@ -2664,3 +2664,25 @@ footer {
 .guide-checklist {
   max-width: 700px;
 }
+
+.product-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  margin-bottom: 20px;
+  padding: 9px 18px;
+  border: 1px solid rgba(36, 33, 29, 0.25);
+  border-radius: 2px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #24211d;
+  transition: all 0.2s ease;
+}
+
+.product-back-link:hover {
+  border-color: #b68235;
+  color: #7d5411;
+  background: rgba(182, 130, 53, 0.07);
+}
