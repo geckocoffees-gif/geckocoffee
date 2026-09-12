@@ -1249,7 +1249,7 @@ footer {
   width: min(100%, 520px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 16px;
 }
 
 .product-thumbnails {
