@@ -387,7 +387,7 @@ button {
 
 .coffee-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 300px));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 380px));
   justify-content: start;
   gap: 22px;
 }
