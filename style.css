@@ -408,18 +408,13 @@ button {
   justify-content: center;
   overflow: hidden;
   background: #e5ddce;
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(36, 33, 29, 0.14);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.coffee-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.coffee-card:hover .coffee-image img {
-  transform: scale(1.035);
+.coffee-card:hover .coffee-image {
+  box-shadow: 0 14px 34px rgba(36, 33, 29, 0.2);
 }
 
 .coffee-info {
