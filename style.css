@@ -1238,6 +1238,8 @@ footer {
   align-items: center;
   gap: 16px;
   align-self: start;
+  position: sticky;
+  top: 110px;
 }
 
 .main-image-container {
@@ -2117,7 +2119,7 @@ footer {
     align-items: flex-start;
   }
 
-  .product-page-content h1 {
+  .-content h1 {
     font-size: 4rem;
   }
 
