@@ -41,16 +41,11 @@
   <section class="product-page">
 
     <!-- IMAGE -->
-    <!--
-      Only one photo for now. To add a second photo later,
-      copy the .product-thumbnails block from producto-imperial.html
-      and add a new button here pointing to the new image file.
-    -->
     <div class="product-page-image">
-       <a href="cafes.html" class="product-back-link">
-    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
-    Volver
-  </a>
+      <a href="cafes.html" class="product-back-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+        Volver
+      </a>
       <div class="main-image-container">
         <img
           id="main-product-image"
@@ -58,6 +53,32 @@
           alt="Café Paraíso — Honey"
           class="main-product-image"
         >
+        <button type="button" class="image-nav-arrow image-nav-prev" onclick="prevProductImage()" aria-label="Imagen anterior" style="display:none">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"></path></svg>
+        </button>
+        <button type="button" class="image-nav-arrow image-nav-next" onclick="nextProductImage()" aria-label="Imagen siguiente">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"></path></svg>
+        </button>
+      </div>
+      <div class="product-thumbnails">
+        <button type="button" class="product-thumbnail active" onclick="showProductImage(0)">
+          <img src="paraiso-front.png" alt="Paraíso">
+        </button>
+        <button type="button" class="product-thumbnail" onclick="showProductImage(1)">
+          <img src="pedrolotti-0.png" alt="Productor Pedro Lotti">
+        </button>
+        <button type="button" class="product-thumbnail" onclick="showProductImage(2)">
+          <img src="pedrolotti-1.png" alt="Finca de Pedro Lotti">
+        </button>
+        <button type="button" class="product-thumbnail" onclick="showProductImage(3)">
+          <img src="pedrolotti-2.png" alt="Finca de Pedro Lotti">
+        </button>
+        <button type="button" class="product-thumbnail" onclick="showProductImage(4)">
+          <img src="pedrolotti-3.png" alt="Finca de Pedro Lotti">
+        </button>
+        <button type="button" class="product-thumbnail" onclick="showProductImage(5)">
+          <img src="pedrolotti-4.png" alt="Finca de Pedro Lotti">
+        </button>
       </div>
     </div>
 
@@ -157,13 +178,38 @@
     let selectedSizePrice = 80000;
     let quantity = 1;
 
-    function changeProductImage(image, alt, thumbnail) {
-      document.getElementById("main-product-image").src = image;
-      document.getElementById("main-product-image").alt = alt;
-      document.querySelectorAll(".product-thumbnail").forEach(item => {
-        item.classList.remove("active");
+    const productImages = [
+      { src: "paraiso-front.png", alt: "Café Paraíso — Honey" },
+      { src: "pedrolotti-0.png", alt: "Productor Pedro Lotti" },
+      { src: "pedrolotti-1.png", alt: "Finca de Pedro Lotti" },
+      { src: "pedrolotti-2.png", alt: "Finca de Pedro Lotti" },
+      { src: "pedrolotti-3.png", alt: "Finca de Pedro Lotti" },
+      { src: "pedrolotti-4.png", alt: "Finca de Pedro Lotti" }
+    ];
+    let currentImageIndex = 0;
+
+    function showProductImage(index) {
+      currentImageIndex = index;
+      const image = productImages[index];
+      document.getElementById("main-product-image").src = image.src;
+      document.getElementById("main-product-image").alt = image.alt;
+      document.querySelectorAll(".product-thumbnail").forEach(function (thumb, i) {
+        thumb.classList.toggle("active", i === index);
       });
-      thumbnail.classList.add("active");
+      updateArrowVisibility();
+    }
+
+    function prevProductImage() {
+      if (currentImageIndex > 0) showProductImage(currentImageIndex - 1);
+    }
+
+    function nextProductImage() {
+      if (currentImageIndex < productImages.length - 1) showProductImage(currentImageIndex + 1);
+    }
+
+    function updateArrowVisibility() {
+      document.querySelector(".image-nav-prev").style.display = currentImageIndex === 0 ? "none" : "flex";
+      document.querySelector(".image-nav-next").style.display = currentImageIndex === productImages.length - 1 ? "none" : "flex";
     }
 
     function selectGrind(button) {
