@@ -2689,3 +2689,37 @@ footer {
   color: #7d5411;
   background: rgba(182, 130, 53, 0.07);
 }
+
+.main-image-container {
+  position: relative;
+}
+
+.image-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: none;
+  border-radius: 50%;
+  color: #24211d;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  backdrop-filter: blur(2px);
+}
+
+.image-nav-arrow:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.image-nav-prev {
+  left: 12px;
+}
+
+.image-nav-next {
+  right: 12px;
+}
