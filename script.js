@@ -410,6 +410,18 @@ function injectFooter() {
     '</div>';
 }
 
+function injectFavicon() {
+  let link = document.querySelector("link[rel~='icon']");
+  if (!link) {
+    link = document.createElement("link");
+    link.rel = "icon";
+    document.head.appendChild(link);
+  }
+  link.type = "image/png";
+  link.href = "logo-gecko.png";
+}
+
+injectFavicon();
 injectWhatsappFloat();
 injectSideMenu();
 injectFooter();
