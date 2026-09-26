@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encanto — Gecko Coffee</title>
+<meta name="description" content="Encanto — Acauã Honey de Brasil. Café de especialidad con 85.88 puntos SCA.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+<a href="index.html" class="logo">
+<img src="logo-gecko.png" alt="Gecko Coffee">
+<span>GECKO<span>COFFEE</span></span>
+</a>
+<nav>
+<a href="index.html">Inicio</a>
+<a href="cafes.html" class="active">Cafés</a>
+<a href="index.html#nosotros">Nosotros</a>
+<a href="index.html#contacto">Contacto</a>
+<a href="cart.html" class="cart-link">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+<span id="cart-count">0</span>
+</a>
+</nav>
+</header>
+
+<main class="light-page">
+<section class="product-page">
+
+  <div class="product-page-image">
+    <a href="cafes.html" class="product-back-link">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"></path></svg>
+      Volver
+    </a>
+    <div class="main-image-container">
+      <img
+        id="main-product-image"
+        src="encanto-front.png"
+        alt="Café Encanto — Acauã Honey"
+        class="main-product-image"
+      >
+    </div>
+  </div>
+
+  <div class="product-page-content">
+    <p class="eyebrow">ACAUÃ · HONEY · BRASIL</p>
+    <h1>Encanto</h1>
+
+    <div class="product-score">85.88 <span>SCA</span></div>
+
+    <p class="product-tasting">Miel · Cacao · Frutas Rojas</p>
+
+    <div class="product-description">
+      <p>Café de especialidad producido en las tierras volcánicas del estado de São Paulo, Brasil.</p>
+      <p>En taza, presenta notas de miel, cacao y frutas rojas, acompañadas de un <strong>cuerpo licoroso</strong> y un <strong>final ligeramente seco</strong>.</p>
+      <p>100% Café Arábica.</p>
+    </div>
+
+    <div class="product-details">
+      <div><span>Variedad</span><strong>Acauã</strong></div>
+      <div><span>Proceso</span><strong>Honey</strong></div>
+      <div><span>Origen</span><strong>Brasil · São Sebastião da Grama</strong></div>
+      <div><span>Finca</span><strong>Sítio Córrego de Anta</strong></div>
+      <div><span>Altitud</span><strong>1.250 m</strong></div>
+      <div><span>Productor</span><strong>André Stein</strong></div>
+      <div><span>Cosecha</span><strong>Junio 2026</strong></div>
+      <div><span>Tueste</span><strong>Claro</strong></div>
+    </div>
+
+    <!-- PURCHASE -->
+    <div class="purchase">
+
+      <div class="purchase-group">
+        <p class="purchase-label">Presentación</p>
+        <div class="selection-row">
+          <button type="button" class="selection-option active" data-grind="En granos" onclick="selectGrind(this)">
+            En granos
+          </button>
+          <button type="button" class="selection-option disabled" disabled>
+            Molido
+          </button>
+        </div>
+      </div>
+
+      <div class="purchase-group">
+        <p class="purchase-label">Tamaño</p>
+        <div class="selection-row">
+          <button type="button" class="selection-option active" data-size="250 g" data-price="60000" onclick="selectSize(this)">
+            250 g
+          </button>
+          <button type="button" class="selection-option" data-size="1 kg" data-price="220000" onclick="selectSize(this)">
+            1 kg
+          </button>
+        </div>
+        <div class="selected-price" id="selected-price">60.000 Gs</div>
+      </div>
+
+      <div class="purchase-group">
+        <p class="purchase-label">Cantidad</p>
+        <div class="quantity-selector">
+          <button type="button" class="qty-btn" onclick="changeQuantity(-1)">−</button>
+          <span id="quantity-value">1</span>
+          <button type="button" class="qty-btn" onclick="changeQuantity(1)">+</button>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="add-to-cart-button"
+        class="add-to-cart-button"
+        onclick="addSelectedToOrder()"
+      >
+        Añadir al carrito
+      </button>
+      <p id="selection-message" class="selection-message">250 g · En granos</p>
+    </div>
+
+    <a href="cafes.html" class="back-link">← Volver a nuestros cafés</a>
+
+  </div>
+
+</section>
+</main>
+
+<footer></footer>
+
+<script>
+  let selectedGrind = "En granos";
+  let selectedSize = "250 g";
+  let selectedSizePrice = 60000;
+  let quantity = 1;
+
+  function selectGrind(button) {
+    document.querySelectorAll(".purchase-group:nth-of-type(1) .selection-option").forEach(option => {
+      if (!option.classList.contains("disabled")) {
+        option.classList.remove("active");
+      }
+    });
+    button.classList.add("active");
+    selectedGrind = button.dataset.grind;
+    updateSelectionMessage();
+  }
+
+  function selectSize(button) {
+    document.querySelectorAll(".purchase-group:nth-of-type(2) .selection-option").forEach(option => {
+      option.classList.remove("active");
+    });
+    button.classList.add("active");
+    selectedSize = button.dataset.size;
+    selectedSizePrice = Number(button.dataset.price);
+    document.getElementById("selected-price").textContent =
+      selectedSizePrice.toLocaleString("es-PY") + " Gs";
+    updateSelectionMessage();
+  }
+
+  function changeQuantity(delta) {
+    quantity = Math.max(1, quantity + delta);
+    document.getElementById("quantity-value").textContent = quantity;
+  }
+
+  function updateSelectionMessage() {
+    document.getElementById("selection-message").textContent =
+      selectedSize + " · " + selectedGrind;
+  }
+
+  function addSelectedToOrder() {
+    addToOrder("Encanto", selectedGrind, selectedSize, selectedSizePrice, quantity);
+  }
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
