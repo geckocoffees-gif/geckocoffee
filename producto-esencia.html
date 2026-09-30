@@ -55,19 +55,19 @@
       <button type="button" class="product-thumbnail active" onclick="showProductImage(0)">
         <img src="esencia-front.png" alt="Esencia">
       </button>
-      <button type="button" class="product-thumbnail" onclick="showProductImage(2)">
+      <button type="button" class="product-thumbnail" onclick="showProductImage(1)">
         <img src="portilho-5.jpeg" alt="Finca Sitio dos Portilhos">
       </button>
-      <button type="button" class="product-thumbnail" onclick="showProductImage(3)">
+      <button type="button" class="product-thumbnail" onclick="showProductImage(2)">
         <img src="portilho-8.jpeg" alt="Finca Sitio dos Portilhos">
       </button>
-      <button type="button" class="product-thumbnail" onclick="showProductImage(4)">
+      <button type="button" class="product-thumbnail" onclick="showProductImage(3)">
         <img src="portilho-11.jpeg" alt="Finca Sitio dos Portilhos">
       </button>
-      <button type="button" class="product-thumbnail" onclick="showProductImage(5)">
+      <button type="button" class="product-thumbnail" onclick="showProductImage(4)">
         <img src="portilho-12.jpeg" alt="Finca Sitio dos Portilhos">
       </button>
-      <button type="button" class="product-thumbnail" onclick="showProductImage(6)">
+      <button type="button" class="product-thumbnail" onclick="showProductImage(5)">
         <img src="portilho-4.jpeg" alt="Finca Sitio dos Portilhos">
       </button>
     </div>
@@ -193,15 +193,6 @@
   function updateArrowVisibility() {
     document.querySelector(".image-nav-prev").style.display = currentImageIndex === 0 ? "none" : "flex";
     document.querySelector(".image-nav-next").style.display = currentImageIndex === productImages.length - 1 ? "none" : "flex";
-  }
-
-  function changeProductImage(image, alt, thumbnail) {
-    document.getElementById("main-product-image").src = image;
-    document.getElementById("main-product-image").alt = alt;
-    document.querySelectorAll(".product-thumbnail").forEach(item => {
-      item.classList.remove("active");
-    });
-    thumbnail.classList.add("active");
   }
 
   function selectGrind(button) {
