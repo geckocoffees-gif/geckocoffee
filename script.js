@@ -24,14 +24,122 @@ function showToast(message) {
   }, 3000);
 }
 
+/* =========================
+   SALE (Black Friday)
+   Runs on its own: starts and ends by the dates below (Paraguay time).
+   To change or end it, edit SALE. Prices in the HTML stay the full price.
+========================= */
+
+const SALE = {
+  name: "Black Friday",
+  percent: 20,
+  start: new Date("2026-11-19T00:00:00-03:00"),
+  end: new Date("2026-12-01T00:00:00-03:00")
+};
+
+function isSaleActive() {
+  const now = new Date();
+  return now >= SALE.start && now < SALE.end;
+}
+
+function salePrice(fullPrice) {
+  return Math.round(fullPrice * (100 - SALE.percent) / 100 / 1000) * 1000;
+}
+
+function saleLabel() {
+  return SALE.name + " −" + SALE.percent + "%";
+}
+
+function priceHtml(fullPrice) {
+  return (
+    '<s class="price-old">' + formatGs(fullPrice) + '</s>' +
+    '<span class="price-new">' + formatGs(salePrice(fullPrice)) + '</span>'
+  );
+}
+
+function applySale() {
+  if (!isSaleActive()) return;
+
+  // Catalogue cards
+  document.querySelectorAll(".coffee-card").forEach(function (card) {
+    const priceEl = card.querySelector(".coffee-price");
+    if (!priceEl || priceEl.dataset.saleApplied) return;
+    const fullPrice = Number(priceEl.textContent.replace(/\D/g, ""));
+    if (!fullPrice) return;
+    priceEl.dataset.saleApplied = "1";
+    priceEl.innerHTML = priceHtml(fullPrice);
+
+    const image = card.querySelector(".coffee-image");
+    if (image && !image.querySelector(".sale-badge")) {
+      const badge = document.createElement("span");
+      badge.className = "sale-badge";
+      badge.textContent = "−" + SALE.percent + "%";
+      image.appendChild(badge);
+    }
+  });
+
+  // Product page: size buttons, shown price and the page's own selectSize()
+  const sizeButtons = document.querySelectorAll(".selection-option[data-price]");
+  const shownPrice = document.getElementById("selected-price");
+  if (!sizeButtons.length || !shownPrice || typeof window.selectSize !== "function") return;
+
+  sizeButtons.forEach(function (btn) {
+    if (btn.dataset.fullPrice) return;
+    btn.dataset.fullPrice = btn.dataset.price;
+    btn.dataset.price = String(salePrice(Number(btn.dataset.price)));
+  });
+
+  function showSalePrice() {
+    const active = document.querySelector(".selection-option.active[data-full-price]");
+    if (!active) return;
+    shownPrice.innerHTML =
+      priceHtml(Number(active.dataset.fullPrice)) +
+      '<span class="sale-tag">' + saleLabel() + '</span>';
+  }
+
+  const pageSelectSize = window.selectSize;
+  window.selectSize = function (button) {
+    pageSelectSize(button);
+    showSalePrice();
+  };
+
+  // Re-select the active size so the page's price variables take the sale price
+  const active = document.querySelector(".selection-option.active[data-price]") || sizeButtons[0];
+  window.selectSize(active);
+}
+
+function injectSaleBar() {
+  if (!isSaleActive()) return;
+  const path = window.location.pathname;
+  const isHome = path === "/" || /\/index\.html$/.test(path) || path === "";
+  if (!isHome || document.querySelector(".sale-bar")) return;
+
+  const end = new Date(SALE.end.getTime() - 1);
+  const lastDay = end.toLocaleDateString("es-PY", { day: "numeric", month: "long", timeZone: "America/Asuncion" });
+  const lastDayShort = end.toLocaleDateString("es-PY", { day: "numeric", month: "numeric", timeZone: "America/Asuncion" });
+
+  const bar = document.createElement("div");
+  bar.className = "sale-bar";
+  bar.innerHTML =
+    '<span class="sale-bar-name">' + SALE.name + '</span>' +
+    '<span class="sale-bar-text">' +
+      '<span class="sale-bar-long">' + SALE.percent + '% de descuento en todos los cafés · hasta el ' + lastDay + '</span>' +
+      '<span class="sale-bar-short">−' + SALE.percent + '% en todos los cafés hasta el ' + lastDayShort + '</span>' +
+    '</span>' +
+    '<a href="cafes.html" class="sale-bar-link">Ver cafés</a>';
+  document.body.insertBefore(bar, document.body.firstChild);
+}
+
 function addToOrder(product, grind, size, unitPrice, quantity) {
   quantity = quantity || 1;
+  const onSale = isSaleActive() && document.querySelector(".selection-option[data-full-price]") !== null;
   order.push({
     product: product,
     grind: grind,
     size: size,
     unitPrice: unitPrice,
-    quantity: quantity
+    quantity: quantity,
+    sale: onSale ? saleLabel() : null
   });
   saveOrder();
   updateOrder();
@@ -73,7 +181,7 @@ function updateOrder() {
           '<span class="order-item-qty">' + item.quantity + ' ×</span>' +
           '<span class="order-item-info">' +
           '<span class="order-item-name">' + item.product + '</span>' +
-          '<span class="order-item-detail">' + item.grind + ' · ' + item.size + '</span>' +
+          '<span class="order-item-detail">' + item.grind + ' · ' + item.size + (item.sale ? ' · <span class="order-item-sale">' + item.sale + '</span>' : '') + '</span>' +
           '</span>' +
           '<span class="order-item-price">' + formatGs(item.unitPrice * item.quantity) + '</span>' +
           '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')" aria-label="Quitar del pedido">' +
@@ -102,7 +210,7 @@ function submitOrder(event) {
 
   const details = order
     .map(function (item) {
-      return item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity);
+      return item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity) + (item.sale ? " (" + item.sale + ")" : "");
     })
     .join("\n");
 
@@ -422,6 +530,8 @@ function injectFavicon() {
 }
 
 injectFavicon();
+injectSaleBar();
+applySale();
 injectWhatsappFloat();
 injectSideMenu();
 injectFooter();

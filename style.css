@@ -2728,3 +2728,110 @@ footer {
 .image-nav-next {
   right: 12px;
 }
+
+
+/* =========================
+   SALE (Black Friday) — shown only while the sale in script.js is active
+========================= */
+
+.sale-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 18px;
+  padding: 11px 6%;
+  background: #1d1b18;
+  color: #f5f1e8;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.sale-bar-name {
+  color: #d9a24b;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.sale-bar-link {
+  color: #f5f1e8;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.sale-bar-link:hover {
+  color: #d9a24b;
+}
+
+.price-old {
+  margin-right: 8px;
+  color: rgba(36, 33, 29, 0.45);
+  font-weight: 400;
+  font-size: 0.85em;
+}
+
+.price-new {
+  color: #24211d;
+}
+
+.coffee-image {
+  position: relative;
+}
+
+.sale-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 6px 11px;
+  border-radius: 2px;
+  background: #1d1b18;
+  color: #f5f1e8;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.sale-tag {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 4px 9px;
+  border-radius: 2px;
+  background: #1d1b18;
+  color: #f5f1e8;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.order-item-sale {
+  color: #7d5411;
+  font-weight: 600;
+}
+
+.sale-bar-short {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .sale-bar {
+    gap: 4px 12px;
+    padding: 9px 5%;
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+  }
+
+  .sale-bar-long {
+    display: none;
+  }
+
+  .sale-bar-short {
+    display: inline;
+  }
+}
