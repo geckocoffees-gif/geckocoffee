@@ -1,3 +1,125 @@
+/* =========================
+   LANGUAGE
+   Spanish pages live in the root, German pages in /de/ with <html lang="de">.
+   T() returns the text for the page's language; ROOT is the path to the
+   shared files (images, style.css) from the current page.
+========================= */
+
+const LANG = document.documentElement.lang === "de" ? "de" : "es";
+const ROOT = LANG === "de" ? "../" : "";
+
+const TEXT = {
+  es: {
+    viewCart: "Ver carrito",
+    addedToCart: "añadido al carrito",
+    cartEmpty: "Todavía no agregaste ningún café.",
+    removeItem: "Quitar del pedido",
+    sending: "Enviando...",
+    submitOrder: "Finalizar pedido",
+    orderError: "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@gmail.com.",
+    submitContact: "Enviar consulta",
+    contactThanks: "¡Gracias! Te responderemos a la brevedad.",
+    contactError: "Hubo un problema al enviar tu consulta. Escribinos directamente a geckocoffees@gmail.com.",
+    whatsapp: "Escribinos por WhatsApp",
+    openMenu: "Abrir menú",
+    closeMenu: "Cerrar menú",
+    coffees: "Cafés",
+    guide: "Guía del café",
+    guideConservacion: "Conservación",
+    guideReposo: "Reposo y frescura",
+    guideMolienda: "Molienda",
+    guideAgua: "Agua",
+    guidePreparacion: "Preparación",
+    info: "Información",
+    shipping: "Envíos",
+    returns: "Cambios y devoluciones",
+    faq: "Preguntas frecuentes",
+    roasting: "Tueste y frescura",
+    contact: "Contacto",
+    tagline: "Café de especialidad",
+    shop: "Comprar",
+    ourCoffees: "Nuestros cafés",
+    howToBuy: "Cómo comprar",
+    cart: "Carrito",
+    help: "Ayuda",
+    videoThumb: "Miniatura del video",
+    saleLong: function (pct, day) { return pct + "% de descuento en todos los cafés · hasta el " + day; },
+    saleShort: function (pct, day) { return "−" + pct + "% en todos los cafés hasta el " + day; },
+    saleLink: "Ver cafés",
+    dateLocale: "es-PY"
+  },
+  de: {
+    viewCart: "Zum Warenkorb",
+    addedToCart: "in den Warenkorb gelegt",
+    cartEmpty: "Du hast noch keinen Kaffee ausgewählt.",
+    removeItem: "Aus der Bestellung entfernen",
+    sending: "Wird gesendet …",
+    submitOrder: "Bestellung abschicken",
+    orderError: "Beim Senden deiner Bestellung ist ein Fehler aufgetreten. Bitte versuch es noch einmal oder schreib uns an geckocoffees@gmail.com.",
+    submitContact: "Nachricht senden",
+    contactThanks: "Vielen Dank! Wir melden uns so schnell wie möglich bei dir.",
+    contactError: "Beim Senden deiner Nachricht ist ein Fehler aufgetreten. Schreib uns direkt an geckocoffees@gmail.com.",
+    whatsapp: "Schreib uns auf WhatsApp",
+    openMenu: "Menü öffnen",
+    closeMenu: "Menü schließen",
+    coffees: "Kaffees",
+    guide: "Kaffeeratgeber",
+    guideConservacion: "Aufbewahrung",
+    guideReposo: "Ruhezeit und Frische",
+    guideMolienda: "Mahlgrad",
+    guideAgua: "Wasser",
+    guidePreparacion: "Zubereitung",
+    info: "Informationen",
+    shipping: "Versand",
+    returns: "Umtausch und Rückgabe",
+    faq: "Häufige Fragen",
+    roasting: "Röstung und Frische",
+    contact: "Kontakt",
+    tagline: "Spezialitätenkaffee",
+    shop: "Einkaufen",
+    ourCoffees: "Unsere Kaffees",
+    howToBuy: "So bestellst du",
+    cart: "Warenkorb",
+    help: "Hilfe",
+    videoThumb: "Video-Vorschaubild",
+    saleLong: function (pct, day) { return pct + " % Rabatt auf alle Kaffees · bis zum " + day; },
+    saleShort: function (pct, day) { return "−" + pct + " % auf alle Kaffees bis " + day; },
+    saleLink: "Zu den Kaffees",
+    dateLocale: "de-DE"
+  }
+};
+
+function T(key) {
+  return TEXT[LANG][key];
+}
+
+// Link to the same page in the other language, keeping the #section
+function otherLanguageHref() {
+  const file = window.location.pathname.split("/").pop() || "index.html";
+  const target = (file === "de" || file === "index.html") ? "" : file;
+  return (LANG === "de" ? "../" : "de/") + target + window.location.hash;
+}
+
+// Grind as stored in the cart → shown in the page's language
+const GRIND_NAMES = {
+  "En granos": { es: "En granos", de: "Ganze Bohnen" },
+  "Ganze Bohnen": { es: "En granos", de: "Ganze Bohnen" }
+};
+
+function grindName(grind, lang) {
+  return GRIND_NAMES[grind] ? GRIND_NAMES[grind][lang] : grind;
+}
+
+function languageSwitchHtml() {
+  return (
+    '<span class="lang-switch">' +
+    (LANG === "es"
+      ? '<span class="lang-current" aria-current="true">Español</span><a href="' + otherLanguageHref() + '" hreflang="de" lang="de">Deutsch</a>'
+      : '<a href="' + otherLanguageHref() + '" hreflang="es" lang="es">Español</a><span class="lang-current" aria-current="true">Deutsch</span>') +
+    '</span>'
+  );
+}
+
 let order = JSON.parse(localStorage.getItem("geckoOrder") || "[]");
 
 function saveOrder() {
@@ -12,7 +134,7 @@ function showToast(message) {
     toast.className = "cart-toast";
     toast.innerHTML =
       '<span id="cart-toast-text"></span>' +
-      '<a href="cart.html">Ver carrito</a>';
+      '<a href="cart.html">' + T("viewCart") + '</a>';
     document.body.appendChild(toast);
   }
 
@@ -111,22 +233,22 @@ function applySale() {
 function injectSaleBar() {
   if (!isSaleActive()) return;
   const path = window.location.pathname;
-  const isHome = path === "/" || /\/index\.html$/.test(path) || path === "";
+  const isHome = path === "" || /^\/(de\/?)?(index\.html)?$/.test(path);
   if (!isHome || document.querySelector(".sale-bar")) return;
 
   const end = new Date(SALE.end.getTime() - 1);
-  const lastDay = end.toLocaleDateString("es-PY", { day: "numeric", month: "long", timeZone: "America/Asuncion" });
-  const lastDayShort = end.toLocaleDateString("es-PY", { day: "numeric", month: "numeric", timeZone: "America/Asuncion" });
+  const lastDay = end.toLocaleDateString(T("dateLocale"), { day: "numeric", month: "long", timeZone: "America/Asuncion" });
+  const lastDayShort = end.toLocaleDateString(T("dateLocale"), { day: "numeric", month: "numeric", timeZone: "America/Asuncion" });
 
   const bar = document.createElement("div");
   bar.className = "sale-bar";
   bar.innerHTML =
     '<span class="sale-bar-name">' + SALE.name + '</span>' +
     '<span class="sale-bar-text">' +
-      '<span class="sale-bar-long">' + SALE.percent + '% de descuento en todos los cafés · hasta el ' + lastDay + '</span>' +
-      '<span class="sale-bar-short">−' + SALE.percent + '% en todos los cafés hasta el ' + lastDayShort + '</span>' +
+      '<span class="sale-bar-long">' + T("saleLong")(SALE.percent, lastDay) + '</span>' +
+      '<span class="sale-bar-short">' + T("saleShort")(SALE.percent, lastDayShort) + '</span>' +
     '</span>' +
-    '<a href="cafes.html" class="sale-bar-link">Ver cafés</a>';
+    '<a href="cafes.html" class="sale-bar-link">' + T("saleLink") + '</a>';
   document.body.insertBefore(bar, document.body.firstChild);
 }
 
@@ -143,7 +265,7 @@ function addToOrder(product, grind, size, unitPrice, quantity) {
   });
   saveOrder();
   updateOrder();
-  showToast(quantity + " × " + product + " añadido al carrito");
+  showToast(quantity + " × " + product + " " + T("addedToCart"));
 }
 
 function removeFromOrder(index) {
@@ -170,7 +292,7 @@ function updateOrder() {
   if (!order.length) {
     list.innerHTML =
       '<div class="order-empty">' +
-      '<p class="order-empty-title">Todavía no agregaste ningún café.</p>' +
+      '<p class="order-empty-title">' + T("cartEmpty") + '</p>' +
       '</div>';
     if (form) form.hidden = true;
   } else {
@@ -181,10 +303,10 @@ function updateOrder() {
           '<span class="order-item-qty">' + item.quantity + ' ×</span>' +
           '<span class="order-item-info">' +
           '<span class="order-item-name">' + item.product + '</span>' +
-          '<span class="order-item-detail">' + item.grind + ' · ' + item.size + (item.sale ? ' · <span class="order-item-sale">' + item.sale + '</span>' : '') + '</span>' +
+          '<span class="order-item-detail">' + grindName(item.grind, LANG) + ' · ' + item.size + (item.sale ? ' · <span class="order-item-sale">' + item.sale + '</span>' : '') + '</span>' +
           '</span>' +
           '<span class="order-item-price">' + formatGs(item.unitPrice * item.quantity) + '</span>' +
-          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')" aria-label="Quitar del pedido">' +
+          '<button type="button" class="remove-item" onclick="removeFromOrder(' + index + ')" aria-label="' + T("removeItem") + '">' +
           '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>' +
           '</button>' +
           '</div>'
@@ -210,7 +332,7 @@ function submitOrder(event) {
 
   const details = order
     .map(function (item) {
-      return item.quantity + " × " + item.product + " — " + item.grind + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity) + (item.sale ? " (" + item.sale + ")" : "");
+      return item.quantity + " × " + item.product + " — " + grindName(item.grind, "es") + " — " + item.size + " — " + formatGs(item.unitPrice * item.quantity) + (item.sale ? " (" + item.sale + ")" : "");
     })
     .join("\n");
 
@@ -225,12 +347,13 @@ function submitOrder(event) {
     "Direccion de entrega": document.getElementById("customer-address").value,
     "Pedido": details,
     "Total": formatGs(total),
-    "_subject": "Nuevo pedido - Gecko Coffee"
+    "_subject": LANG === "de" ? "Nuevo pedido (alemán) - Gecko Coffee" : "Nuevo pedido - Gecko Coffee"
   };
+  if (LANG === "de") payload["Idioma"] = "Alemán (pedido desde la web en alemán)";
 
   const submitButton = event.target.querySelector('button[type="submit"]');
   submitButton.disabled = true;
-  submitButton.textContent = "Enviando...";
+  submitButton.textContent = T("sending");
 
   fetch("https://formsubmit.co/ajax/geckocoffees@gmail.com", {
     method: "POST",
@@ -253,9 +376,8 @@ function submitOrder(event) {
     })
     .catch(function () {
       submitButton.disabled = false;
-      submitButton.textContent = "Finalizar pedido";
-      document.getElementById("order-message").textContent =
-        "Hubo un problema al enviar tu pedido. Probá de nuevo o escribinos a geckocoffees@gmail.com.";
+      submitButton.textContent = T("submitOrder");
+      document.getElementById("order-message").textContent = T("orderError");
     });
 }
 
@@ -266,12 +388,13 @@ function submitContactForm(event) {
     "Nombre": document.getElementById("contact-name").value,
     "Email": document.getElementById("contact-email").value,
     "Consulta": document.getElementById("contact-message").value,
-    "_subject": "Nueva consulta - Gecko Coffee"
+    "_subject": LANG === "de" ? "Nueva consulta (alemán) - Gecko Coffee" : "Nueva consulta - Gecko Coffee"
   };
+  if (LANG === "de") payload["Idioma"] = "Alemán";
 
   const submitButton = event.target.querySelector('button[type="submit"]');
   submitButton.disabled = true;
-  submitButton.textContent = "Enviando...";
+  submitButton.textContent = T("sending");
 
   fetch("https://formsubmit.co/ajax/geckocoffees@gmail.com", {
     method: "POST",
@@ -288,15 +411,13 @@ function submitContactForm(event) {
     .then(function () {
       event.target.reset();
       submitButton.disabled = false;
-      submitButton.textContent = "Enviar consulta";
-      document.getElementById("contact-form-message").textContent =
-        "¡Gracias! Te responderemos a la brevedad.";
+      submitButton.textContent = T("submitContact");
+      document.getElementById("contact-form-message").textContent = T("contactThanks");
     })
     .catch(function () {
       submitButton.disabled = false;
-      submitButton.textContent = "Enviar consulta";
-      document.getElementById("contact-form-message").textContent =
-        "Hubo un problema al enviar tu consulta. Escribinos directamente a geckocoffees@gmail.com.";
+      submitButton.textContent = T("submitContact");
+      document.getElementById("contact-form-message").textContent = T("contactError");
     });
 }
 
@@ -307,7 +428,7 @@ function injectWhatsappFloat() {
   link.className = "whatsapp-float";
   link.href = "https://wa.me/595981197868";
   link.target = "_blank";
-  link.setAttribute("aria-label", "Escribinos por WhatsApp");
+  link.setAttribute("aria-label", T("whatsapp"));
   link.innerHTML =
     '<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2.003c-5.514 0-9.997 4.483-9.997 9.997 0 1.762.464 3.484 1.345 4.997L2 22l5.144-1.334a9.96 9.96 0 0 0 4.86 1.237h.004c5.514 0 9.997-4.483 9.997-9.997 0-2.67-1.04-5.182-2.929-7.07a9.935 9.935 0 0 0-7.072-2.833zm0 18.187h-.003a8.19 8.19 0 0 1-4.17-1.144l-.299-.177-3.055.793.816-2.978-.194-.306a8.19 8.19 0 0 1-1.255-4.377c0-4.527 3.68-8.207 8.207-8.207 2.192 0 4.252.854 5.802 2.406a8.15 8.15 0 0 1 2.4 5.805c0 4.527-3.68 8.185-8.25 8.185z"/></svg>';
   document.body.appendChild(link);
@@ -323,7 +444,7 @@ function injectSideMenu() {
   const toggle = document.createElement("button");
   toggle.id = "menu-toggle";
   toggle.className = "menu-toggle";
-  toggle.setAttribute("aria-label", "Abrir menú");
+  toggle.setAttribute("aria-label", T("openMenu"));
   toggle.innerHTML =
     '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>';
 
@@ -341,45 +462,46 @@ function injectSideMenu() {
   menu.id = "side-menu";
   menu.className = "side-menu";
   menu.innerHTML =
-    '<button id="menu-close" class="menu-close" aria-label="Cerrar menú">' +
+    '<button id="menu-close" class="menu-close" aria-label="' + T("closeMenu") + '">' +
     '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>' +
     '</button>' +
     '<div class="side-menu-logo">' +
-    '<img src="logo-gecko.png" alt="Gecko Coffee">' +
+    '<img src="' + ROOT + 'logo-gecko.png" alt="Gecko Coffee">' +
     '<span>GECKO<span>COFFEE</span></span>' +
     '</div>' +
     '<ul class="side-menu-list">' +
-    '<li><a href="cafes.html">Cafés</a></li>' +
+    '<li><a href="cafes.html">' + T("coffees") + '</a></li>' +
 
     '<li class="side-menu-group">' +
     '<button type="button" class="side-menu-group-toggle" aria-expanded="false">' +
-    '<span>Guía del café</span>' +
+    '<span>' + T("guide") + '</span>' +
     '<svg class="side-menu-arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
     '</button>' +
     '<ul class="side-menu-sublist">' +
-    '<li><a href="guia-del-cafe.html#conservacion">Conservación</a></li>' +
-    '<li><a href="guia-del-cafe.html#reposo">Reposo y frescura</a></li>' +
-    '<li><a href="guia-del-cafe.html#molienda">Molienda</a></li>' +
-    '<li><a href="guia-del-cafe.html#agua">Agua</a></li>' +
-    '<li><a href="guia-del-cafe.html#preparacion">Preparación</a></li>' +
+    '<li><a href="guia-del-cafe.html#conservacion">' + T("guideConservacion") + '</a></li>' +
+    '<li><a href="guia-del-cafe.html#reposo">' + T("guideReposo") + '</a></li>' +
+    '<li><a href="guia-del-cafe.html#molienda">' + T("guideMolienda") + '</a></li>' +
+    '<li><a href="guia-del-cafe.html#agua">' + T("guideAgua") + '</a></li>' +
+    '<li><a href="guia-del-cafe.html#preparacion">' + T("guidePreparacion") + '</a></li>' +
     '</ul>' +
     '</li>' +
 
     '<li class="side-menu-group">' +
     '<button type="button" class="side-menu-group-toggle" aria-expanded="false">' +
-    '<span>Información</span>' +
+    '<span>' + T("info") + '</span>' +
     '<svg class="side-menu-arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"></path></svg>' +
     '</button>' +
     '<ul class="side-menu-sublist">' +
-    '<li><a href="informacion.html#envios">Envíos</a></li>' +
-    '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
-    '<li><a href="informacion.html#preguntas">Preguntas frecuentes</a></li>' +
-    '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
+    '<li><a href="informacion.html#envios">' + T("shipping") + '</a></li>' +
+    '<li><a href="informacion.html#cambios">' + T("returns") + '</a></li>' +
+    '<li><a href="informacion.html#preguntas">' + T("faq") + '</a></li>' +
+    '<li><a href="informacion.html#tueste">' + T("roasting") + '</a></li>' +
     '</ul>' +
     '</li>' +
 
-    '<li><a href="index.html#contacto">Contacto</a></li>' +
-    '</ul>';
+    '<li><a href="index.html#contacto">' + T("contact") + '</a></li>' +
+    '</ul>' +
+    '<div class="side-menu-lang">' + languageSwitchHtml() + '</div>';
 
   document.body.appendChild(overlay);
   document.body.appendChild(menu);
@@ -441,7 +563,7 @@ function initGuideVideos() {
     if (!videoId) return;
 
     el.innerHTML =
-      '<img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="Miniatura del video">' +
+      '<img src="https://img.youtube.com/vi/' + videoId + '/hqdefault.jpg" alt="' + T("videoThumb") + '">' +
       '<div class="guide-video-play">' +
       '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>' +
       '</div>';
@@ -463,7 +585,7 @@ function injectFooter() {
 
     '<div class="footer-brand">' +
     '<p class="footer-wordmark">Gecko Coffee</p>' +
-    '<p class="footer-tagline">Café de especialidad</p>' +
+    '<p class="footer-tagline">' + T("tagline") + '</p>' +
     '<div class="footer-social">' +
     '<a href="https://www.instagram.com/geckocoffeepy" target="_blank" aria-label="Instagram">' +
     '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"></circle></svg>' +
@@ -475,27 +597,27 @@ function injectFooter() {
     '</div>' +
 
     '<div class="footer-column">' +
-    '<h4>Comprar</h4>' +
+    '<h4>' + T("shop") + '</h4>' +
     '<ul>' +
-    '<li><a href="cafes.html">Nuestros cafés</a></li>' +
-    '<li><a href="guia-del-cafe.html">Cómo comprar</a></li>' +
-    '<li><a href="cart.html">Carrito</a></li>' +
+    '<li><a href="cafes.html">' + T("ourCoffees") + '</a></li>' +
+    '<li><a href="guia-del-cafe.html">' + T("howToBuy") + '</a></li>' +
+    '<li><a href="cart.html">' + T("cart") + '</a></li>' +
     '</ul>' +
     '</div>' +
 
     '<div class="footer-column">' +
-    '<h4>Ayuda</h4>' +
+    '<h4>' + T("help") + '</h4>' +
     '<ul>' +
-    '<li><a href="guia-del-cafe.html">Guía del café</a></li>' +
-    '<li><a href="informacion.html#envios">Envíos</a></li>' +
-    '<li><a href="informacion.html#cambios">Cambios y devoluciones</a></li>' +
-    '<li><a href="informacion.html#preguntas">Preguntas frecuentes</a></li>' +
-    '<li><a href="informacion.html#tueste">Tueste y frescura</a></li>' +
+    '<li><a href="guia-del-cafe.html">' + T("guide") + '</a></li>' +
+    '<li><a href="informacion.html#envios">' + T("shipping") + '</a></li>' +
+    '<li><a href="informacion.html#cambios">' + T("returns") + '</a></li>' +
+    '<li><a href="informacion.html#preguntas">' + T("faq") + '</a></li>' +
+    '<li><a href="informacion.html#tueste">' + T("roasting") + '</a></li>' +
     '</ul>' +
     '</div>' +
 
     '<div class="footer-column footer-contact">' +
-    '<h4>Contacto</h4>' +
+    '<h4>' + T("contact") + '</h4>' +
     '<ul class="footer-contact-list">' +
     '<li>' +
     '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22Z"></path><circle cx="12" cy="9.5" r="2.3"></circle></svg>' +
@@ -514,7 +636,8 @@ function injectFooter() {
 
     '</div>' +
     '<div class="footer-bottom">' +
-    '<p>© 2026 Gecko Coffee · Café de especialidad</p>' +
+    '<p>© 2026 Gecko Coffee · ' + T("tagline") + '</p>' +
+    languageSwitchHtml() +
     '</div>';
 }
 
@@ -526,7 +649,7 @@ function injectFavicon() {
     document.head.appendChild(link);
   }
   link.type = "image/png";
-  link.href = "logo-gecko.png";
+  link.href = ROOT + "logo-gecko.png";
 }
 
 injectFavicon();
