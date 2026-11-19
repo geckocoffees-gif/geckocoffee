@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Gecko Coffee — Mikrorösterei für Spezialitätenkaffee in Paraguay."
+  >
+
+  <title>Gecko Coffee — Spezialitätenkaffee</title>
+
+<link rel="alternate" hreflang="es" href="https://geckocoffee.com.py/">
+<link rel="alternate" hreflang="de" href="https://geckocoffee.com.py/de/">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+
+    <a href="#inicio" class="logo">
+
+      <img
+        src="../logo-gecko.png"
+        alt="Gecko Coffee"
+      >
+
+      <span>
+        GECKO<span>COFFEE</span>
+      </span>
+
+    </a>
+
+
+    <nav>
+
+  <a href="#inicio" class="active">
+    Start
+  </a>
+
+  <a href="cafes.html">
+    Kaffees
+  </a>
+
+  <a href="#nosotros">
+    Über uns
+  </a>
+
+  <a href="#contacto">
+    Kontakt
+  </a>
+
+  <a href="cart.html" class="cart-link">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+    <span id="cart-count">0</span>
+  </a>
+
+</nav>
+
+  </header>
+
+
+  <!-- HERO -->
+
+  <section class="hero-v2" id="inicio">
+    <img src="../hero.jpg" alt="Kaffeekirschen an der Pflanze" class="hero-v2-image">
+    <div class="hero-v2-overlay"></div>
+    <div class="hero-v2-content">
+      <div class="hero-v2-kicker">
+        <span class="hero-v2-line"></span>
+        Mikrorösterei · Spezialitätenkaffee
+        <span class="hero-v2-line"></span>
+      </div>
+      <h1>Entdecke, wie schön Kaffee sein kann</h1>
+      <a href="cafes.html" class="hero-v2-button">Unsere Kaffees</a>
+    </div>
+  </section>
+
+
+  <!-- VALUES -->
+
+  <section class="values-section">
+    <div class="values-heading">
+      <span class="values-label">Unsere Werte</span>
+      <span class="values-rule"></span>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-number">01</div>
+        <h3>Frische</h3>
+        <p>Wir rösten auf Bestellung, damit dein Kaffee frisch ankommt und sein ganzes Aroma behält.</p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">02</div>
+        <h3>Herkunft</h3>
+        <p>Wir wählen Kaffees von Produzenten, die unseren Anspruch an Qualität und Charakter teilen.</p>
+      </div>
+
+      <div class="value-item">
+        <div class="value-number">03</div>
+        <h3>Transparenz</h3>
+        <p>Wir erzählen dir alles, was wir über jeden Kaffee wissen: Produzent, Varietät, Aufbereitung und Ernte.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- NOSOTROS -->
+
+  <section class="nosotros-section" id="nosotros">
+    <div class="nosotros-image">
+      <img src="../nosotros.jpg" alt="Kaffeezubereitung mit der Chemex">
+    </div>
+    <div class="nosotros-content">
+   <span class="nosotros-label">Über uns</span>
+   <h2>Kaffee ist ein Moment</h2>
+   <div class="nosotros-rule"></div>
+   <p>Einen guten Kaffee zuzubereiten hat etwas Besonderes. Das Aroma, das sich nach und nach entfaltet, das Wasser, das jede Note zum Leben erweckt, die kurze Pause vor dem ersten Schluck.</p>
+   <p>Bei Gecko Coffee glauben wir, dass jeder Kaffee diesen Moment verdient: ihn zu entdecken, ihn zu genießen und sich von ihm überraschen zu lassen.</p>
+  <a href="cafes.html" class="nosotros-button">Zu unseren Kaffees</a>
+</div>
+  </section>
+
+
+  <!-- CONTACT -->
+
+  <section class="contact-v2" id="contacto">
+    <div class="contact-v2-info">
+      <span class="contact-v2-label">Kontakt</span>
+      <h2>Möchtest du mehr über unsere Kaffees erfahren?</h2>
+      <p>Schreib uns! Wir helfen dir gern, deinen nächsten Kaffee auszuwählen.</p>
+      <div class="contact-v2-links">
+        <a href="mailto:geckocoffees@gmail.com">geckocoffees@gmail.com</a>
+        <a href="https://wa.me/595981197868" target="_blank">WhatsApp · 0981 197 868</a>
+      </div>
+    </div>
+
+    <form id="contact-form" class="contact-v2-form" onsubmit="submitContactForm(event)">
+      <label>Name
+        <input type="text" id="contact-name" required>
+      </label>
+      <label>E-Mail
+        <input type="email" id="contact-email" required>
+      </label>
+      <label>Deine Nachricht
+        <textarea id="contact-message" rows="4" required></textarea>
+      </label>
+      <button type="submit">Nachricht senden</button>
+      <p id="contact-form-message"></p>
+    </form>
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="logo">
+
+      <img
+        src="../logo-gecko.png"
+        alt="Gecko Coffee"
+      >
+
+      <span>
+        GECKO<span>COFFEE</span>
+      </span>
+
+    </div>
+
+
+    <p>
+      © 2026 Gecko Coffee · Spezialitätenkaffee
+    </p>
+
+  </footer>
+
+
+  <script src="../script.js"></script>
+
+</body>
+
+</html>

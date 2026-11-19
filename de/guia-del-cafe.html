@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaffeeratgeber — Gecko Coffee</title>
+<link rel="alternate" hreflang="es" href="https://geckocoffee.com.py/guia-del-cafe.html">
+<link rel="alternate" hreflang="de" href="https://geckocoffee.com.py/de/guia-del-cafe.html">
+<meta name="description" content="Tipps zu Aufbewahrung, Ruhezeit, Mahlgrad, Wasser und Zubereitung von Kaffee.">
+<link rel="stylesheet" href="../style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* Classical — design-system tokens and component classes. This file is the source of truth for the system's look; retune it here and see readme.md. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Lora:wght@400;600&display=swap');
+
+:root {
+  --color-bg: #f3f2f2;
+  --color-surface: #eae9e9;
+  --color-text: #201f1d;
+  --color-accent: #b68235;
+  --color-accent-2: #ac803e;
+  --color-divider: color-mix(in srgb, #201f1d 16%, transparent);
+
+  /* Tonal ramps — generated in OKLCH on one shared lightness scale, so the
+     same step of any role matches the others in visual value. */
+  --color-neutral-100: #f8f4f4;
+  --color-neutral-200: #eae7e7;
+  --color-neutral-300: #d7d3d3;
+  --color-neutral-400: #bab6b6;
+  --color-neutral-500: #9b9797;
+  --color-neutral-600: #7d7979;
+  --color-neutral-700: #605d5d;
+  --color-neutral-800: #444141;
+  --color-neutral-900: #2d2b2b;
+
+  --color-accent-100: #fff3e4;
+  --color-accent-200: #ffe3bf;
+  --color-accent-300: #facb8d;
+  --color-accent-400: #e1ad66;
+  --color-accent-500: #c28d41;
+  --color-accent-600: #a06f24;
+  --color-accent-700: #7d5411;
+  --color-accent-800: #5a3b0a;
+  --color-accent-900: #3a270d;
+
+  --color-accent-2-100: #fff3e4;
+  --color-accent-2-200: #ffe3be;
+  --color-accent-2-300: #f5cd96;
+  --color-accent-2-400: #dbaf70;
+  --color-accent-2-500: #bc8f4e;
+  --color-accent-2-600: #9b7232;
+  --color-accent-2-700: #79561f;
+  --color-accent-2-800: #573d14;
+  --color-accent-2-900: #382810;
+
+  --font-heading: "Cormorant Garamond", system-ui, sans-serif;
+  --font-heading-weight: 600; /* review round 3: bold retired — semibold is the
+     interface headings' ceiling (they need the weight at small sizes); display
+     text goes lighter still, to the normal cut (see the deck) */
+  --font-body: "Lora", system-ui, sans-serif;
+
+  --space-1: 4.6px;
+  --space-2: 9.2px;
+  --space-3: 13.8px;
+  --space-4: 18.4px;
+  --space-6: 27.6px;
+  --space-8: 36.8px;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 7px;
+
+  /* Elevation — derived from the ground: soft ink-tinted shadows on a
+     light theme, a hairline edge + ambient darkness on a dark one. */
+  --shadow-sm: 0 1px 2px color-mix(in srgb, #2d2b2b 14%, transparent);
+  --shadow-md: 0 3px 10px color-mix(in srgb, #2d2b2b 16%, transparent);
+  --shadow-lg: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: var(--font-heading-weight); }
+
+.plate-frame{position:relative;aspect-ratio:1/1;overflow:hidden;box-sizing:border-box;
+  border:6px solid var(--color-surface);outline:1px solid var(--color-divider);background:#ffffff}
+.plate{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:contain;padding:8px;box-sizing:border-box;transition:transform 0.3s ease}
+.plate-frame:hover .plate{transform:scale(1.08)}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Components — built with the tokens above. Plain CSS
+   on plain HTML: no JavaScript, no build step. Each class is documented in
+   readme.md and demonstrated in foundations/ and components/.
+   ══════════════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-size: 15px; line-height: 1.55; font-weight: 400; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  line-height: 1.12; letter-spacing: -0.015em; margin: 0 0 var(--space-2);
+}
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+h3 { font-size: 25px; }
+h4 { font-size: 20px; }
+h5 { font-size: 16px; }
+h6 { font-size: 13px; }
+h6 { letter-spacing: 0.08em; text-transform: uppercase; }
+p { margin: 0 0 var(--space-3); }
+.gc-body a { color: var(--color-accent); text-underline-offset: 3px; }
+img { display: block; max-width: 100%; }
+figure { margin: 0; }
+figcaption {
+  font-size: 11px; margin-top: var(--space-1);
+  color: color-mix(in srgb, var(--color-text) 55%, transparent);
+}
+.text-muted { color: color-mix(in srgb, var(--color-text) 55%, transparent); }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+/* — rules — */
+.hr {
+  height: 1px; border: 0; margin: var(--space-4) 0;
+  background: var(--color-divider);
+}
+
+/* — buttons — */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none;
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 14px; line-height: 1.2; color: var(--color-text); /* matches the .input's 14px —
+     the pair sits side by side in sign-up rows */
+  background: transparent; border: 1px solid transparent;
+  padding: var(--space-2) calc(var(--space-3) * 1.2);
+  border-radius: var(--radius-md);
+}
+.btn svg { display: block; }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-primary { color: var(--color-accent); border-color: var(--color-accent); }
+.btn-primary:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+.btn-primary:active { background: color-mix(in srgb, var(--color-accent) 22%, transparent); }
+.btn-secondary { border-color: var(--color-divider); }
+.btn-secondary:hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.btn-secondary:active { background: color-mix(in srgb, var(--color-text) 14%, transparent); }
+.btn-ghost { color: var(--color-accent); padding-inline: var(--space-1); }
+.btn-ghost:hover { background: color-mix(in srgb, var(--color-accent) 10%, transparent); }
+.btn-ghost:active { background: color-mix(in srgb, var(--color-accent) 18%, transparent); }
+.btn-icon { width: 36px; height: 36px; padding: 0; }
+.btn-block { width: 100%; margin-top: var(--space-2); }
+
+/* — forms — */
+.field > label {
+  display: block; font-size: 12px; margin-bottom: 5px;
+  color: color-mix(in srgb, var(--color-text) 70%, transparent);
+}
+.input {
+  width: 100%; min-height: 36px; padding: 6px 10px; font: inherit;
+  font-size: 14px; color: var(--color-text); caret-color: var(--color-accent);
+  background: transparent;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.input:hover { border-color: color-mix(in srgb, var(--color-text) 45%, transparent); }
+.input:focus-visible { border-color: var(--color-accent); outline-offset: 0; }
+textarea.input { min-height: 90px; resize: vertical; }
+.radio { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; }
+.radio input, .seg-opt input {
+  position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none;
+}
+.radio .dot {
+  width: 16px; height: 16px; flex: none; border-radius: 50%;
+  border: 1.5px solid var(--color-divider);
+}
+.radio:hover .dot { border-color: var(--color-accent); }
+.radio input:checked + .dot {
+  border-color: var(--color-accent); background: var(--color-accent);
+  box-shadow: inset 0 0 0 4px var(--color-bg);
+}
+.radio input:focus-visible + .dot { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+.seg {
+  display: inline-flex; overflow: hidden;
+  border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+}
+.seg-opt {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px; font-size: 13px; cursor: pointer;
+}
+.seg-opt + .seg-opt { border-left: 1px solid var(--color-divider); }
+.seg-opt:has(input:checked) { color: var(--color-accent); box-shadow: inset 0 0 0 1px var(--color-accent); }
+.seg-opt:not(:has(input:checked)):hover { background: color-mix(in srgb, var(--color-text) 7%, transparent); }
+.seg-opt:has(input:focus-visible) { outline: 2px solid var(--color-accent); outline-offset: -2px; }
+
+/* — cards — */
+.card {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding: var(--space-3); border-radius: var(--radius-md); background: transparent; border: 1px solid var(--color-divider);
+}
+.card-kicker { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent); }
+.card-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 17px; line-height: 1.2;
+}
+.card-body { margin: 0; font-size: 13px; opacity: 0.8; flex: 1; }
+.card-meta {
+  display: flex; align-items: center; gap: 6px; font-size: 11px;
+  color: color-mix(in srgb, var(--color-text) 50%, transparent);
+}
+.elev-sm { box-shadow: var(--shadow-sm); }
+.elev-md { box-shadow: var(--shadow-md); }
+.elev-lg { box-shadow: var(--shadow-lg); }
+
+/* — tags — */
+.tag {
+  display: inline-flex; align-items: center; font-size: 11px;
+  letter-spacing: 0.02em; padding: 3px 10px;
+  border-radius: calc(var(--radius-md) * 0.75);
+}
+.tag-accent { background: var(--color-accent-100); color: var(--color-accent-800); }
+.tag-accent-2 { background: var(--color-accent-2-100); color: var(--color-accent-2-800); }
+.tag-neutral { background: var(--color-neutral-100); color: var(--color-neutral-800); }
+.tag-outline { border: 1px solid var(--color-accent); color: var(--color-accent); }
+
+/* — navigation — */
+.nav {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-divider);
+}
+.nav-brand {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 18px; margin-right: auto;
+}
+.nav a { color: inherit; text-decoration: none; font-size: 14px; }
+.nav a:hover, .nav a[aria-current='page'] { color: var(--color-accent); }
+
+/* — tables — */
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th {
+  text-align: left; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  padding: var(--space-2); border-bottom: 1px solid var(--color-divider);
+}
+.table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-divider);
+}
+.table tbody tr:hover { background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+
+/* — dialog — */
+.dialog-backdrop {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  padding: var(--space-4);
+  background: color-mix(in srgb, var(--color-neutral-900) 50%, transparent);
+}
+.dialog {
+  width: min(440px, 100%); display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-lg);
+  background: var(--color-surface); box-shadow: var(--shadow-lg); border: 1px solid var(--color-divider);
+}
+.dialog-title {
+  font-family: var(--font-heading); font-weight: var(--font-heading-weight);
+  font-size: 20px;
+}
+.dialog-body { font-size: 14px; opacity: 0.85; }
+.dialog-actions { display: flex; justify-content: flex-end; gap: var(--space-2); margin-top: var(--space-2); }
+
+
+</style>
+<style>
+
+  html { scroll-behavior: smooth; }
+  body { -webkit-font-smoothing: antialiased; }
+  .toc-link { display:flex; gap:10px; align-items:baseline; text-decoration:none; color:var(--color-text); padding:7px 0; border-bottom:1px solid var(--color-divider); }
+  .toc-link:last-child { border-bottom:0; }
+  .toc-link .n { font-family:var(--font-heading); font-feature-settings:"tnum"; font-size:12px; letter-spacing:.08em; color:var(--color-neutral-600); min-width:1.6em; }
+  .toc-link .t { font-family:var(--font-heading); font-size:17px; }
+  .toc-link:hover { color:var(--color-accent-700); }
+  .toc-link:hover .n { color:var(--color-accent-700); }
+  .toc-link.is-active .t { color:var(--color-accent-700); font-style:italic; }
+  .toc-link.is-active .n { color:var(--color-accent-700); }
+  .gc-body p { text-align:justify; hyphens:auto; text-wrap:pretty; }
+  .gc-body li { text-align:justify; hyphens:auto; margin-bottom:var(--space-3); }
+  @media (max-width: 900px) {
+    .gc-shell { grid-template-columns:1fr !important; }
+    .gc-rail { position:static !important; border-right:0 !important; padding-right:0 !important; border-bottom:1px solid var(--color-divider); padding-bottom:var(--space-4); }
+    .gc-plates { grid-template-columns:1fr 1fr !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+<a href="index.html" class="logo">
+<img src="../logo-gecko.png" alt="Gecko Coffee">
+<span>GECKO<span>COFFEE</span></span>
+</a>
+<nav>
+<a href="index.html">Start</a>
+<a href="cafes.html">Kaffees</a>
+<a href="index.html#nosotros">Über uns</a>
+<a href="index.html#contacto">Kontakt</a>
+<a href="cart.html" class="cart-link">
+<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+<span id="cart-count">0</span>
+</a>
+</nav>
+</header>
+
+<div class="light-page" style="min-height:100vh; color:var(--color-text); font-family:var(--font-body)">
+
+  <section style="border-bottom:1px solid var(--color-divider)">
+    <div style="max-width:1180px; margin:0 auto; padding:var(--space-8) 40px calc(var(--space-8) * 1.2); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,0.72fr); gap:var(--space-8); align-items:end">
+      <div>
+        <div style="font-family:var(--font-heading); font-size:12px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-neutral-600); margin-bottom:var(--space-3)">Gecko Coffee · Spezialitätenkaffee</div>
+        <h1 style="font-size:clamp(46px, 6vw, 76px); font-weight:400; margin:0; line-height:1.02">Kaffeeratgeber</h1>
+      </div>
+      <p style="margin:0 0 6px; font-size:17px; line-height:1.7; color:color-mix(in srgb, var(--color-text) 72%, transparent); text-wrap:pretty">Ein paar Empfehlungen, wie du deinen Kaffee richtig aufbewahrst, zubereitest und am besten genießt.</p>
+    </div>
+  </section>
+
+  <div class="gc-shell" style="max-width:1180px; margin:0 auto; padding:var(--space-8) 40px calc(var(--space-8) * 2); display:grid; grid-template-columns:210px minmax(0,1fr); gap:var(--space-8)">
+
+    <aside>
+      <div class="gc-rail" style="position:sticky; top:96px; border-right:1px solid var(--color-divider); padding-right:var(--space-4)">
+        <div style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--color-neutral-600); margin-bottom:var(--space-2)">Inhalt</div>
+        <nav style="display:flex; flex-direction:column">
+          <a class="toc-link" href="#conservacion" data-toc="conservacion"><span class="n">01</span><span class="t">Aufbewahrung</span></a>
+          <a class="toc-link" href="#reposo" data-toc="reposo"><span class="n">02</span><span class="t">Ruhezeit und Frische</span></a>
+          <a class="toc-link" href="#molienda" data-toc="molienda"><span class="n">03</span><span class="t">Mahlgrad</span></a>
+          <a class="toc-link" href="#agua" data-toc="agua"><span class="n">04</span><span class="t">Wasser</span></a>
+          <a class="toc-link" href="#preparacion" data-toc="preparacion"><span class="n">05</span><span class="t">Zubereitung</span></a>
+        </nav>
+      </div>
+    </aside>
+
+    <main class="gc-body" style="max-width:760px">
+
+      <article id="conservacion" style="scroll-margin-top:110px">
+        <div style="display:flex; align-items:baseline; gap:var(--space-4); border-top:1px solid var(--color-text); padding-top:var(--space-3)">
+          <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; font-feature-settings:'tnum'; color:var(--color-accent-700)">01</span>
+          <h2 style="margin:0; font-size:38px; font-weight:400">Aufbewahrung</h2>
+        </div>
+        <p style="margin-top:var(--space-3); font-size:18px; line-height:1.65; font-style:italic; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:left">So bewahrst du deinen Kaffee auf, damit Aroma und Geschmack länger erhalten bleiben.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); margin-top:var(--space-6)">
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72"><strong>Gerösteter Kaffee ist empfindlich gegenüber Sauerstoff, Feuchtigkeit, Licht und Wärme.</strong> Richtig aufbewahrt behält er seine Aromen und seinen Geschmack deutlich länger.</p>
+            <p style="margin:0; font-size:15px; line-height:1.7"><strong>Am einfachsten bewahrst du den Kaffee in seiner Originaltüte auf.</strong> Drück nach jedem Öffnen so viel Luft wie möglich heraus, verschließ die Tüte gut und lagere sie an einem kühlen, trockenen und dunklen Ort.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:var(--space-3); border-left:1px solid var(--color-divider); padding-left:var(--space-6)">
+            <p style="margin:0; font-size:15px; line-height:1.7">Wir raten davon ab, den Kaffee im Kühlschrank aufzubewahren oder ihn offen, in der Sonne oder in der Nähe von Wärmequellen stehen zu lassen.</p>
+            <div style="margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+              <div style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:var(--space-1)">Unser Tipp</div>
+              <p style="margin:0; font-family:var(--font-heading); font-size:20px; line-height:1.3; text-align:left">Bewahre den Kaffee gut verschlossen an einem kühlen, trockenen und dunklen Ort auf.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article id="reposo" style="scroll-margin-top:110px; margin-top:calc(var(--space-8) * 1.6)">
+        <div style="display:flex; align-items:baseline; gap:var(--space-4); border-top:1px solid var(--color-text); padding-top:var(--space-3)">
+          <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; font-feature-settings:'tnum'; color:var(--color-accent-700)">02</span>
+          <h2 style="margin:0; font-size:38px; font-weight:400">Ruhezeit und Frische</h2>
+        </div>
+        <p style="margin-top:var(--space-3); font-size:18px; line-height:1.65; font-style:italic; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:left">Warum es sich lohnt, frisch gerösteten Kaffee ein paar Tage ruhen zu lassen.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Frisch gerösteter Kaffee braucht etwas Zeit, um die Gase abzugeben, die beim Rösten entstehen. Deshalb <strong>schmeckt er direkt nach dem Rösten nicht unbedingt am besten.</strong></p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Wir empfehlen, ihn vor der Zubereitung etwa <strong>1 bis 2 Wochen</strong> ruhen zu lassen. Die ideale Ruhezeit hängt aber vom Kaffee, von der Aufbereitung und vom Röstgrad ab.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Manche Kaffees sind schon früher auf ihrem Höhepunkt, andere brauchen etwas länger.</p>
+          </div>
+          <div style="border-left:1px solid var(--color-divider); padding-left:var(--space-6); display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Nach der Ruhezeit <strong>empfehlen wir, ihn innerhalb des ersten Monats</strong> ab Röstdatum zu genießen. Dann sind Aroma und Geschmack meist am besten.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Gut aufbewahrt kannst du ihn auch danach problemlos verwenden, mit der Zeit verliert er aber an Intensität und Komplexität.</p>
+            <div style="margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+              <div style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:var(--space-1)">Unser Tipp</div>
+              <p style="margin:0; font-family:var(--font-heading); font-size:20px; line-height:1.3; text-align:left">Nur keine Eile. Lass den Kaffee mindestens eine Woche ruhen.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:var(--space-4); margin-top:var(--space-6)">
+          <div style="border-top:1px solid var(--color-accent-300); padding-top:var(--space-2)">
+            <div style="font-family:var(--font-heading); font-size:22px; line-height:1.2">Tag 0–7</div>
+            <div style="font-size:13px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Der Kaffee ist frisch geröstet und muss noch ruhen.</div>
+          </div>
+          <div style="border-top:1px solid var(--color-accent-500); padding-top:var(--space-2)">
+            <div style="font-family:var(--font-heading); font-size:22px; line-height:1.2">1–3 Wochen</div>
+            <div style="font-size:13px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Die Aromen entfalten sich und werden ausgewogener.</div>
+          </div>
+          <div style="border-top:1px solid var(--color-accent-700); padding-top:var(--space-2)">
+            <div style="font-family:var(--font-heading); font-size:22px; line-height:1.2">Nach 1 Monat</div>
+            <div style="font-size:13px; color:color-mix(in srgb, var(--color-text) 62%, transparent)">Immer noch gut, kann aber an Intensität verlieren.</div>
+          </div>
+        </div>
+      </article>
+
+      <article id="molienda" style="scroll-margin-top:110px; margin-top:calc(var(--space-8) * 1.6)">
+        <div style="display:flex; align-items:baseline; gap:var(--space-4); border-top:1px solid var(--color-text); padding-top:var(--space-3)">
+          <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; font-feature-settings:'tnum'; color:var(--color-accent-700)">03</span>
+          <h2 style="margin:0; font-size:38px; font-weight:400">Mahlgrad</h2>
+        </div>
+        <p style="margin-top:var(--space-3); font-size:18px; line-height:1.65; font-style:italic; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:left">Den Kaffee erst direkt vor der Zubereitung zu mahlen, macht in der Tasse einen großen Unterschied.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Wenn möglich, empfehlen wir dir, <strong>ganze Bohnen zu kaufen</strong> und sie erst direkt vor der Zubereitung zu mahlen. Das macht in der Tasse einen großen Unterschied.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Beim Mahlen vergrößert sich die Oberfläche, die mit Luft in Kontakt kommt, enorm. Dadurch gehen Aromen und flüchtige Stoffe viel schneller verloren. Deshalb <strong>ist frisches Mahlen kurz vor der Zubereitung einer der einfachsten Wege, Spezialitätenkaffee noch mehr zu genießen.</strong></p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Neben guten Bohnen ist eine <strong>gute Mühle</strong> eine der besten Investitionen, wenn du deinen Kaffee zu Hause verbessern möchtest.</p>
+            <div style="margin-top:var(--space-2)">
+              <h3 style="margin:0 0 var(--space-2); font-family:var(--font-heading); font-size:23px; font-weight:600; font-style:italic; color:var(--color-accent-700)">Handmühle oder elektrische Mühle?</h3>
+              <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+                <p style="margin:0; font-size:15.5px; line-height:1.72">Eine gute elektrische Mühle ist sehr bequem, vor allem wenn du mehrere Tassen am Tag zubereitest. Aber <strong>für den Einstieg ist eine gute Handmühle eine ausgezeichnete Wahl.</strong></p>
+                <p style="margin:0; font-size:15.5px; line-height:1.72">Du musst kein Vermögen ausgeben, um gleichmäßig zu mahlen und zu Hause richtig guten Kaffee zu genießen. Eine gute Handmühle mit hochwertigem Mahlwerk und präziser Mahlgradeinstellung liefert hervorragende Ergebnisse und ist eine deutlich günstigere Investition.</p>
+              </div>
+            </div>
+          </div>
+          <div style="border-left:1px solid var(--color-divider); padding-left:var(--space-6); display:flex; flex-direction:column; gap:var(--space-3)">
+            <h3 style="margin:0 0 var(--space-1); font-family:var(--font-heading); font-size:23px; font-weight:600; font-style:italic; color:var(--color-accent-700)">Ist feiner immer besser?</h3>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Nicht unbedingt.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Es gibt den Trend, immer feiner zu mahlen, um mehr zu extrahieren. Aber <strong>mehr Extraktion bedeutet nicht automatisch eine bessere Tasse.</strong></p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Bei zu geringer Extraktion schmeckt der Kaffee sauer, dünn oder unausgewogen. Bei zu starker Extraktion wird er bitter, trocken oder adstringierend.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Der ideale Mahlgrad hängt vom Kaffee, von der Methode, vom Wasser, von der Temperatur und von der Brühzeit ab. Ziel ist nicht, möglichst viel zu extrahieren, sondern <strong>den Punkt zu finden, an dem der Kaffee ausgewogen und angenehm schmeckt.</strong></p>
+            <div style="margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+              <div style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:var(--space-1)">Unser Tipp</div>
+              <p style="margin:0; font-family:var(--font-heading); font-size:20px; line-height:1.3; text-align:left">Starte mit einem passenden Mahlgrad für deine Methode und justiere dann nach Geschmack Schritt für Schritt nach.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article id="agua" style="scroll-margin-top:110px; margin-top:calc(var(--space-8) * 1.6)">
+        <div style="display:flex; align-items:baseline; gap:var(--space-4); border-top:1px solid var(--color-text); padding-top:var(--space-3)">
+          <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; font-feature-settings:'tnum'; color:var(--color-accent-700)">04</span>
+          <h2 style="margin:0; font-size:38px; font-weight:400">Wasser</h2>
+        </div>
+        <p style="margin-top:var(--space-3); font-size:18px; line-height:1.65; font-style:italic; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:left">Eine Tasse Filterkaffee besteht zu etwa 98 % aus Wasser. Seine Qualität spielt also eine große Rolle.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+          <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+            <div>
+              <h3 style="margin:0 0 var(--space-2); font-family:var(--font-heading); font-size:22px; font-weight:400">Auch das Wasser zählt</h3>
+              <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+                <p style="margin:0; font-size:15.5px; line-height:1.72">Wasser ist eine der Hauptzutaten von Kaffee. Es beeinflusst, wie Süße, Säure, Körper und Aromen zur Geltung kommen.</p>
+                <p style="margin:0; font-size:15.5px; line-height:1.72">Deshalb kann derselbe Kaffee, gleich zubereitet, je nach Wasser ganz unterschiedlich schmecken.</p>
+              </div>
+            </div>
+            <div style="margin-top:var(--space-2)">
+              <h3 style="margin:0 0 var(--space-2); font-family:var(--font-heading); font-size:22px; font-weight:400">Welches Wasser sollte ich verwenden?</h3>
+              <p style="margin:0 0 var(--space-3); font-size:15.5px; line-height:1.72">Als Ausgangspunkt: Nimm ein Wasser, das du auch pur gern trinkst. Es sollte:</p>
+              <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:var(--space-2); font-size:15px; line-height:1.6">
+                <li style="padding-left:var(--space-4); border-left:1px solid var(--color-divider)">sauber sein und angenehm schmecken</li>
+                <li style="padding-left:var(--space-4); border-left:1px solid var(--color-divider)">keinen Fremdgeruch oder -geschmack haben</li>
+                <li style="padding-left:var(--space-4); border-left:1px solid var(--color-divider)">wenig bis mäßig mineralisiert sein</li>
+                <li style="padding-left:var(--space-4); border-left:1px solid var(--color-divider)">nicht zu hart sein</li>
+              </ul>
+            </div>
+          </div>
+          <div style="border-left:1px solid var(--color-divider); padding-left:var(--space-6); display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Wenn dein Leitungswasser stark nach Chlor schmeckt, Kalk hinterlässt oder einen kräftigen Eigengeschmack hat, wirkt sich das auf die Tasse aus. Dann ist gefiltertes Wasser eine gute Wahl.</p>
+            <div style="margin-top:var(--space-1)">
+              <h3 style="margin:0 0 var(--space-2); font-family:var(--font-heading); font-size:22px; font-weight:400">Ein wenig zu den Mineralien</h3>
+              <div style="display:flex; flex-direction:column; gap:var(--space-3)">
+                <div>
+                  <p style="margin:0 0 4px; font-size:15.5px; line-height:1.5"><strong>GH — Gesamthärte</strong></p>
+                  <p style="margin:0; font-size:15.5px; line-height:1.72">Gibt vor allem den Gehalt an Calcium und Magnesium an. Sie kann die Extraktion und den Körper des Kaffees beeinflussen.</p>
+                </div>
+                <div>
+                  <p style="margin:0 0 4px; font-size:15.5px; line-height:1.5"><strong>KH — Karbonathärte</strong></p>
+                  <p style="margin:0; font-size:15.5px; line-height:1.72">Gibt an, wie stark das Wasser Säure neutralisiert. Eine hohe Karbonathärte kann die Säure dämpfen und den Kaffee flach wirken lassen.</p>
+                </div>
+                <p style="margin:0; font-size:15.5px; line-height:1.72">Du musst diese Werte nicht messen, um guten Kaffee zu machen. Fang mit gutem, frisch gemahlenem Kaffee und sauberem, angenehmem Wasser an.</p>
+              </div>
+            </div>
+            <div style="margin-top:var(--space-1); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+              <div style="font-family:var(--font-heading); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-accent-700); margin-bottom:var(--space-1)">Unser Tipp</div>
+              <p style="margin:0; font-family:var(--font-heading); font-size:20px; line-height:1.3; text-align:left">Unterschätze das Wasser nicht.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article id="preparacion" style="scroll-margin-top:110px; margin-top:calc(var(--space-8) * 1.6)">
+        <div style="display:flex; align-items:baseline; gap:var(--space-4); border-top:1px solid var(--color-text); padding-top:var(--space-3)">
+          <span style="font-family:var(--font-heading); font-size:13px; letter-spacing:0.12em; font-feature-settings:'tnum'; color:var(--color-accent-700)">05</span>
+          <h2 style="margin:0; font-size:38px; font-weight:400">Zubereitung</h2>
+        </div>
+        <p style="margin-top:var(--space-3); font-size:18px; line-height:1.65; font-style:italic; color:color-mix(in srgb, var(--color-text) 70%, transparent); text-align:left">Es gibt nicht den einen richtigen Weg, Kaffee zuzubereiten.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); margin-top:var(--space-6); border-top:1px solid var(--color-divider); padding-top:var(--space-4)">
+          <div>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Kaffee ist eine persönliche Sache. Was der eine liebt, gefällt dem anderen vielleicht weniger. Es gibt keine festen Regeln, wie Kaffee zubereitet werden muss, und kein Rezept, das für alle perfekt ist.</p>
+          </div>
+          <div style="border-left:1px solid var(--color-divider); padding-left:var(--space-6); display:flex; flex-direction:column; gap:var(--space-3)">
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Die Rezepte, die wir hier teilen, sind deshalb einfach einige der Arten, wie wir unsere Kaffees gern zubereiten. Es sind nicht die einzigen und nicht unbedingt die besten für dich. Sie sind ein Ausgangspunkt, damit du experimentieren und herausfinden kannst, was dir am besten schmeckt.</p>
+            <p style="margin:0; font-size:15.5px; line-height:1.72">Jeder Kaffee, jede Methode und jeder Mensch ist anders. Du kannst Mahlgrad, Kaffeemenge, Wasser, Temperatur oder Brühzeit verändern, bis du eine Tasse findest, die dir wirklich schmeckt.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:var(--space-6)">
+          <h3 style="margin:0 0 4px; font-family:var(--font-heading); font-size:22px; font-weight:400">Rezepte für den Einstieg</h3>
+          <p style="margin:0 0 var(--space-4); font-size:15px; line-height:1.65; color:color-mix(in srgb, var(--color-text) 68%, transparent); max-width:68ch">Hier findest du einige Rezepte und Methoden, die wir mögen. Probier sie aus, pass sie an und mach sie zu deinen eigenen. Die Rezepte führen zu YouTube-Videos, die wir als Einstieg empfehlen (auf Englisch).</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:var(--space-4)">
+
+            <a href="https://www.youtube.com/watch?v=PNFVCmxBjQQ" target="_blank" style="text-decoration:none; color:inherit; display:block">
+              <div style="position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-sm); background:var(--color-neutral-100)">
+                <img src="https://img.youtube.com/vi/PNFVCmxBjQQ/mqdefault.jpg" alt="V60" style="width:100%; height:100%; object-fit:cover; display:block">
+                <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                  <div style="width:32px; height:32px; border-radius:50%; background:rgba(20,18,15,0.72); display:flex; align-items:center; justify-content:center">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:var(--space-2); font-family:var(--font-heading); font-size:15px">V60</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=ikt-X5x7yoc" target="_blank" style="text-decoration:none; color:inherit; display:block">
+              <div style="position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-sm); background:var(--color-neutral-100)">
+                <img src="https://img.youtube.com/vi/ikt-X5x7yoc/mqdefault.jpg" alt="Chemex" style="width:100%; height:100%; object-fit:cover; display:block">
+                <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                  <div style="width:32px; height:32px; border-radius:50%; background:rgba(20,18,15,0.72); display:flex; align-items:center; justify-content:center">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:var(--space-2); font-family:var(--font-heading); font-size:15px">Chemex</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=XGs5QVAU-00" target="_blank" style="text-decoration:none; color:inherit; display:block">
+              <div style="position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-sm); background:var(--color-neutral-100)">
+                <img src="https://img.youtube.com/vi/XGs5QVAU-00/mqdefault.jpg" alt="AeroPress" style="width:100%; height:100%; object-fit:cover; display:block">
+                <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                  <div style="width:32px; height:32px; border-radius:50%; background:rgba(20,18,15,0.72); display:flex; align-items:center; justify-content:center">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:var(--space-2); font-family:var(--font-heading); font-size:15px">AeroPress</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=st571DYYTR8" target="_blank" style="text-decoration:none; color:inherit; display:block">
+              <div style="position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-sm); background:var(--color-neutral-100)">
+                <img src="https://img.youtube.com/vi/st571DYYTR8/mqdefault.jpg" alt="French Press" style="width:100%; height:100%; object-fit:cover; display:block">
+                <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                  <div style="width:32px; height:32px; border-radius:50%; background:rgba(20,18,15,0.72); display:flex; align-items:center; justify-content:center">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:var(--space-2); font-family:var(--font-heading); font-size:15px">French Press</div>
+            </a>
+
+            <a href="https://www.youtube.com/watch?v=JFobNy79mbk" target="_blank" style="text-decoration:none; color:inherit; display:block">
+              <div style="position:relative; aspect-ratio:16/9; overflow:hidden; border-radius:var(--radius-sm); background:var(--color-neutral-100)">
+                <img src="https://img.youtube.com/vi/JFobNy79mbk/mqdefault.jpg" alt="Moka Pot" style="width:100%; height:100%; object-fit:cover; display:block">
+                <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
+                  <div style="width:32px; height:32px; border-radius:50%; background:rgba(20,18,15,0.72); display:flex; align-items:center; justify-content:center">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="#fff"><path d="M8 5v14l11-7z"></path></svg>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:var(--space-2); font-family:var(--font-heading); font-size:15px">Moka Pot</div>
+            </a>
+
+          </div>
+        </div>
+      </article>
+
+    </main>
+  </div>
+</div>
+
+<footer></footer>
+
+<script src="../script.js"></script>
+<script>
+(function () {
+  var ids = ["conservacion","reposo","molienda","agua","preparacion"];
+  var links = Array.prototype.slice.call(document.querySelectorAll("[data-toc]"));
+  function onScroll() {
+    var current = ids[0];
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 160) current = id;
+    });
+    links.forEach(function (a) {
+      a.classList.toggle("is-active", a.dataset.toc === current);
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>

@@ -5,7 +5,7 @@ Online shop for Gecko Coffee, a specialty coffee micro-roastery in Ciudad del Es
 - Live: https://geckocoffee.com.py (also geckocoffee.vercel.app)
 - Hosting: Vercel, deploys automatically from `main` in about a minute
 - Plain HTML, CSS and JavaScript. No build step, no framework, no folders: every file sits in the repo root.
-- The site is in Spanish (Paraguay). Talk to Patrick in English.
+- The site is in Spanish (Paraguay), with a full German version under `/de/`. Talk to Patrick in English.
 
 ## How Patrick wants to work
 
@@ -27,9 +27,21 @@ Online shop for Gecko Coffee, a specialty coffee micro-roastery in Ciudad del Es
 | `informacion.html` | Envíos, Tueste, Cambios, Preguntas. |
 | `script.js` | Shared on every page: side menu, footer, WhatsApp button, favicon, cart, order email, sale. |
 | `style.css` | All styles. |
-| `sitemap.xml`, `robots.txt` | SEO. Add every new product page to the sitemap. |
+| `de/*.html` | German twins of every page above (see German version). |
+| `sitemap.xml`, `robots.txt` | SEO. Add every new product page (and its `de/` twin) to the sitemap. |
 
 `script.js` injects the side menu, the footer (into the empty `<footer></footer>`), the WhatsApp bubble and the favicon. Never hand-write those into a page.
+
+## German version (`/de/`)
+
+German pages live in `de/` (same file names: `de/index.html`, `de/cafes.html`, `de/producto-*.html` …), served at `geckocoffee.com.py/de/`. Aimed at the German community in Paraguay. Everything is translated except **coffee names** (Encanto, Imperial, …), farms and producers, which stay as is.
+
+- `script.js` and `style.css` are shared. `script.js` reads `<html lang>` and uses the `TEXT` table (`es` / `de`, via `T("key")`) for its own strings: menu, footer, cart, toasts, sale bar, form messages. Images and CSS in `de/` pages use `../` paths.
+- Language switch: "Español · Deutsch" in the side menu and the footer (injected by `script.js`). It links to the same page in the other language. The header was not changed.
+- Orders from German pages are stored and emailed in Spanish (grind is normalised), with an extra "Idioma: Alemán" line and "(alemán)" in the email subject, so Patrick can reply in German.
+- Every page has `hreflang` links (es/de). `sitemap.xml` lists both versions. `vercel.json` redirects `/de` to `/de/`.
+- **When a page, price, description or coffee changes, update its `de/` twin too.** Prices and the sale are shared automatically (the HTML keeps the full price in both). New coffee: also add `de/producto-<name>.html` and its card in `de/cafes.html`.
+- Tone: informal "du", natural German, "Spezialitätenkaffee", "Micro-Lots / Nano-Lots", SCA score with a comma (92,25).
 
 ## Orders
 
@@ -74,5 +86,5 @@ Black Friday 2026: 20% off, 19–30 November.
 
 ## Known loose ends
 
-- `sitemap.xml` is missing `producto-encanto.html`, `producto-regio.html` and `producto-tropical.html`.
+- (Fixed with the German version: the sitemap now lists all product pages.)
 - The footer's Facebook link points to `https://www.facebook.com`, not a Gecko Coffee page.
